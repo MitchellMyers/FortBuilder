@@ -1,0 +1,601 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		30089CA420D84CB6001660C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CA320D84CB6001660C8 /* AppDelegate.swift */; };
+		30089CA620D84CB6001660C8 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 30089CA520D84CB6001660C8 /* art.scnassets */; };
+		30089CA820D84CB6001660C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CA720D84CB6001660C8 /* ViewController.swift */; };
+		30089CAB20D84CB6001660C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30089CA920D84CB6001660C8 /* Main.storyboard */; };
+		30089CAD20D84CB8001660C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30089CAC20D84CB8001660C8 /* Assets.xcassets */; };
+		30089CB020D84CB8001660C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30089CAE20D84CB8001660C8 /* LaunchScreen.storyboard */; };
+		30089CBB20D84CB8001660C8 /* FortBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CBA20D84CB8001660C8 /* FortBuilderTests.swift */; };
+		30089CC620D84CB8001660C8 /* FortBuilderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CC520D84CB8001660C8 /* FortBuilderUITests.swift */; };
+		30089CD520D84D15001660C8 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CD420D84D15001660C8 /* Block.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		30089CB720D84CB8001660C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 30089C9820D84CB6001660C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30089C9F20D84CB6001660C8;
+			remoteInfo = FortBuilder;
+		};
+		30089CC220D84CB8001660C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 30089C9820D84CB6001660C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30089C9F20D84CB6001660C8;
+			remoteInfo = FortBuilder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		30089CA020D84CB6001660C8 /* FortBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FortBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30089CA320D84CB6001660C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		30089CA520D84CB6001660C8 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		30089CA720D84CB6001660C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		30089CAA20D84CB6001660C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		30089CAC20D84CB8001660C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		30089CAF20D84CB8001660C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		30089CB120D84CB8001660C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30089CB620D84CB8001660C8 /* FortBuilderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FortBuilderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30089CBA20D84CB8001660C8 /* FortBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortBuilderTests.swift; sourceTree = "<group>"; };
+		30089CBC20D84CB8001660C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30089CC120D84CB8001660C8 /* FortBuilderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FortBuilderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30089CC520D84CB8001660C8 /* FortBuilderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortBuilderUITests.swift; sourceTree = "<group>"; };
+		30089CC720D84CB8001660C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30089CD420D84D15001660C8 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		30089C9D20D84CB6001660C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30089CB320D84CB8001660C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30089CBE20D84CB8001660C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		30089C9720D84CB6001660C8 = {
+			isa = PBXGroup;
+			children = (
+				30089CA220D84CB6001660C8 /* FortBuilder */,
+				30089CB920D84CB8001660C8 /* FortBuilderTests */,
+				30089CC420D84CB8001660C8 /* FortBuilderUITests */,
+				30089CA120D84CB6001660C8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		30089CA120D84CB6001660C8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				30089CA020D84CB6001660C8 /* FortBuilder.app */,
+				30089CB620D84CB8001660C8 /* FortBuilderTests.xctest */,
+				30089CC120D84CB8001660C8 /* FortBuilderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		30089CA220D84CB6001660C8 /* FortBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				30089CD320D84CCA001660C8 /* Objects */,
+				30089CA320D84CB6001660C8 /* AppDelegate.swift */,
+				30089CA520D84CB6001660C8 /* art.scnassets */,
+				30089CA720D84CB6001660C8 /* ViewController.swift */,
+				30089CA920D84CB6001660C8 /* Main.storyboard */,
+				30089CAC20D84CB8001660C8 /* Assets.xcassets */,
+				30089CAE20D84CB8001660C8 /* LaunchScreen.storyboard */,
+				30089CB120D84CB8001660C8 /* Info.plist */,
+			);
+			path = FortBuilder;
+			sourceTree = "<group>";
+		};
+		30089CB920D84CB8001660C8 /* FortBuilderTests */ = {
+			isa = PBXGroup;
+			children = (
+				30089CBA20D84CB8001660C8 /* FortBuilderTests.swift */,
+				30089CBC20D84CB8001660C8 /* Info.plist */,
+			);
+			path = FortBuilderTests;
+			sourceTree = "<group>";
+		};
+		30089CC420D84CB8001660C8 /* FortBuilderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				30089CC520D84CB8001660C8 /* FortBuilderUITests.swift */,
+				30089CC720D84CB8001660C8 /* Info.plist */,
+			);
+			path = FortBuilderUITests;
+			sourceTree = "<group>";
+		};
+		30089CD320D84CCA001660C8 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				30089CD420D84D15001660C8 /* Block.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		30089C9F20D84CB6001660C8 /* FortBuilder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30089CCA20D84CB8001660C8 /* Build configuration list for PBXNativeTarget "FortBuilder" */;
+			buildPhases = (
+				30089C9C20D84CB6001660C8 /* Sources */,
+				30089C9D20D84CB6001660C8 /* Frameworks */,
+				30089C9E20D84CB6001660C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FortBuilder;
+			productName = FortBuilder;
+			productReference = 30089CA020D84CB6001660C8 /* FortBuilder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		30089CB520D84CB8001660C8 /* FortBuilderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30089CCD20D84CB8001660C8 /* Build configuration list for PBXNativeTarget "FortBuilderTests" */;
+			buildPhases = (
+				30089CB220D84CB8001660C8 /* Sources */,
+				30089CB320D84CB8001660C8 /* Frameworks */,
+				30089CB420D84CB8001660C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30089CB820D84CB8001660C8 /* PBXTargetDependency */,
+			);
+			name = FortBuilderTests;
+			productName = FortBuilderTests;
+			productReference = 30089CB620D84CB8001660C8 /* FortBuilderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		30089CC020D84CB8001660C8 /* FortBuilderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30089CD020D84CB8001660C8 /* Build configuration list for PBXNativeTarget "FortBuilderUITests" */;
+			buildPhases = (
+				30089CBD20D84CB8001660C8 /* Sources */,
+				30089CBE20D84CB8001660C8 /* Frameworks */,
+				30089CBF20D84CB8001660C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30089CC320D84CB8001660C8 /* PBXTargetDependency */,
+			);
+			name = FortBuilderUITests;
+			productName = FortBuilderUITests;
+			productReference = 30089CC120D84CB8001660C8 /* FortBuilderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		30089C9820D84CB6001660C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "BreMy Software";
+				TargetAttributes = {
+					30089C9F20D84CB6001660C8 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					30089CB520D84CB8001660C8 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 30089C9F20D84CB6001660C8;
+					};
+					30089CC020D84CB8001660C8 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 30089C9F20D84CB6001660C8;
+					};
+				};
+			};
+			buildConfigurationList = 30089C9B20D84CB6001660C8 /* Build configuration list for PBXProject "FortBuilder" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 30089C9720D84CB6001660C8;
+			productRefGroup = 30089CA120D84CB6001660C8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				30089C9F20D84CB6001660C8 /* FortBuilder */,
+				30089CB520D84CB8001660C8 /* FortBuilderTests */,
+				30089CC020D84CB8001660C8 /* FortBuilderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		30089C9E20D84CB6001660C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30089CA620D84CB6001660C8 /* art.scnassets in Resources */,
+				30089CB020D84CB8001660C8 /* LaunchScreen.storyboard in Resources */,
+				30089CAD20D84CB8001660C8 /* Assets.xcassets in Resources */,
+				30089CAB20D84CB6001660C8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30089CB420D84CB8001660C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30089CBF20D84CB8001660C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		30089C9C20D84CB6001660C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30089CD520D84D15001660C8 /* Block.swift in Sources */,
+				30089CA820D84CB6001660C8 /* ViewController.swift in Sources */,
+				30089CA420D84CB6001660C8 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30089CB220D84CB8001660C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30089CBB20D84CB8001660C8 /* FortBuilderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30089CBD20D84CB8001660C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30089CC620D84CB8001660C8 /* FortBuilderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		30089CB820D84CB8001660C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30089C9F20D84CB6001660C8 /* FortBuilder */;
+			targetProxy = 30089CB720D84CB8001660C8 /* PBXContainerItemProxy */;
+		};
+		30089CC320D84CB8001660C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30089C9F20D84CB6001660C8 /* FortBuilder */;
+			targetProxy = 30089CC220D84CB8001660C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		30089CA920D84CB6001660C8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30089CAA20D84CB6001660C8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		30089CAE20D84CB8001660C8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30089CAF20D84CB8001660C8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		30089CC820D84CB8001660C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		30089CC920D84CB8001660C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		30089CCB20D84CB8001660C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69767D3ZMK;
+				INFOPLIST_FILE = FortBuilder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		30089CCC20D84CB8001660C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69767D3ZMK;
+				INFOPLIST_FILE = FortBuilder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		30089CCE20D84CB8001660C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FortBuilderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FortBuilder.app/FortBuilder";
+			};
+			name = Debug;
+		};
+		30089CCF20D84CB8001660C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FortBuilderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FortBuilder.app/FortBuilder";
+			};
+			name = Release;
+		};
+		30089CD120D84CB8001660C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FortBuilderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FortBuilder;
+			};
+			name = Debug;
+		};
+		30089CD220D84CB8001660C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FortBuilderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FortBuilder;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		30089C9B20D84CB6001660C8 /* Build configuration list for PBXProject "FortBuilder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30089CC820D84CB8001660C8 /* Debug */,
+				30089CC920D84CB8001660C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30089CCA20D84CB8001660C8 /* Build configuration list for PBXNativeTarget "FortBuilder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30089CCB20D84CB8001660C8 /* Debug */,
+				30089CCC20D84CB8001660C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30089CCD20D84CB8001660C8 /* Build configuration list for PBXNativeTarget "FortBuilderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30089CCE20D84CB8001660C8 /* Debug */,
+				30089CCF20D84CB8001660C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30089CD020D84CB8001660C8 /* Build configuration list for PBXNativeTarget "FortBuilderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30089CD120D84CB8001660C8 /* Debug */,
+				30089CD220D84CB8001660C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 30089C9820D84CB6001660C8 /* Project object */;
+}
