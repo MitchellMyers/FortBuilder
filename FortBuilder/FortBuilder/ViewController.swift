@@ -14,6 +14,7 @@ let kStartingPosition = SCNVector3(0, 0, -0.6)
 let kAnimationDurationMoving: TimeInterval = 0.2
 let kMovingLengthPerLoop: CGFloat = 0.05
 let kRotationRadianPerLoop: CGFloat = 0.2
+let kRotationRadianHalfPi: CGFloat = CGFloat.pi / 2
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
@@ -135,6 +136,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let x = deltas().sin
         let z = deltas().cos
         moveBlock(x: x, z: z, sender: sender)
+    }
+    
+    @IBAction func rotateBlockRight(_ sender: UITapGestureRecognizer) {
+        let action = SCNAction.rotateBy(x: 0, y: -kRotationRadianHalfPi, z: 0, duration: kAnimationDurationMoving)
+        selectedBlock.runAction(action)
+    }
+    
+    
+    @IBAction func rotateBlockLeft(_ sender: UITapGestureRecognizer) {
+        let action = SCNAction.rotateBy(x: 0, y: kRotationRadianHalfPi, z: 0, duration: kAnimationDurationMoving)
+        selectedBlock.runAction(action)
+    }
+    
+    
+    @IBAction func rotateBlockUp(_ sender: UITapGestureRecognizer) {
+        let action = SCNAction.rotateBy(x: 0, y: 0, z: kRotationRadianHalfPi, duration: kAnimationDurationMoving)
+        selectedBlock.runAction(action)
     }
     
     private func deltas() -> (sin: CGFloat, cos: CGFloat) {

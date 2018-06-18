@@ -63,12 +63,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Rot Right"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hc4-WE-xiH" appends="YES" id="5kH-H9-iPF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9y-yf-cta">
                                 <rect key="frame" x="229" y="560" width="54" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Rot Left"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bSL-in-VLr" appends="YES" id="hbo-KR-M1I"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDc-ia-537">
                                 <rect key="frame" x="263" y="522" width="56" height="30"/>
@@ -86,6 +92,15 @@
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="es7-6Z-fkB" appends="YES" id="fO2-nC-Oku"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPs-2b-hnc">
+                                <rect key="frame" x="267" y="484" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Rot Up"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="weE-ct-Lgz" appends="YES" id="0Q4-Fx-mAV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -127,6 +142,21 @@
                         <action selector="moveBlockBack:" destination="BV1-FR-VrT" id="Xtd-a0-JCJ"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="hc4-WE-xiH">
+                    <connections>
+                        <action selector="rotateBlockRight:" destination="BV1-FR-VrT" id="DzM-zk-Q8Y"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="bSL-in-VLr">
+                    <connections>
+                        <action selector="rotateBlockLeft:" destination="BV1-FR-VrT" id="XBq-da-Glw"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="weE-ct-Lgz">
+                    <connections>
+                        <action selector="rotateBlockUp:" destination="BV1-FR-VrT" id="SL0-XH-Pis"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
