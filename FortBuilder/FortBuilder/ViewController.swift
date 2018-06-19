@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-let kStartingPosition = SCNVector3(0, -0.8, -0.8)
+let kStartingPosition = SCNVector3(x: 0.187596142, y: -1.2002033, z: -1.2585659)
 let kAnimationDurationMoving: TimeInterval = 0.2
 let kMovingLengthPerLoop: CGFloat = 0.05
 let kRotationRadianPerLoop: CGFloat = 0.2
@@ -66,17 +66,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-
-    // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
@@ -103,76 +92,44 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     
     @IBAction func moveBlockLeft(_ sender: UILongPressGestureRecognizer) {
-        let x = -deltas().cos
-        let z = deltas().sin
-        moveBlock(x: x, z: z, sender: sender)
+        selectedBlock.moveLeft(sender: sender)
     }
     
     
     @IBAction func moveBlockRight(_ sender: UILongPressGestureRecognizer) {
-        let x = deltas().cos
-        let z = -deltas().sin
-        moveBlock(x: x, z: z, sender: sender)
+        selectedBlock.moveRight(sender: sender)
     }
     
     
     @IBAction func moveBlockUp(_ sender: UILongPressGestureRecognizer) {
-        let action = SCNAction.moveBy(x: 0, y: kMovingLengthPerLoop, z: 0, duration: kAnimationDurationMoving)
-        execute(action: action, sender: sender)
+        selectedBlock.moveUp(sender: sender)
     }
     
     @IBAction func moveBlockDown(_ sender: UILongPressGestureRecognizer) {
-        let action = SCNAction.moveBy(x: 0, y: -kMovingLengthPerLoop, z: 0, duration: kAnimationDurationMoving)
-        execute(action: action, sender: sender)
+        selectedBlock.moveDown(sender: sender)
     }
     
     @IBAction func moveBlockForward(_ sender: UILongPressGestureRecognizer) {
-        let x = -deltas().sin
-        let z = -deltas().cos
-        moveBlock(x: x, z: z, sender: sender)
+        selectedBlock.moveForward(sender: sender)
     }
     
     
     @IBAction func moveBlockBack(_ sender: UILongPressGestureRecognizer) {
-        let x = deltas().sin
-        let z = deltas().cos
-        moveBlock(x: x, z: z, sender: sender)
+        selectedBlock.moveBackward(sender: sender)
     }
     
     @IBAction func rotateBlockRight(_ sender: UITapGestureRecognizer) {
-        let action = SCNAction.rotateBy(x: 0, y: -kRotationRadianHalfPi, z: 0, duration: kAnimationDurationMoving)
-        selectedBlock.runAction(action)
+        selectedBlock.rotateRight(sender: sender)
     }
     
     
     @IBAction func rotateBlockLeft(_ sender: UITapGestureRecognizer) {
-        let action = SCNAction.rotateBy(x: 0, y: kRotationRadianHalfPi, z: 0, duration: kAnimationDurationMoving)
-        selectedBlock.runAction(action)
+        selectedBlock.rotateLeft(sender: sender)
     }
     
     
     @IBAction func rotateBlockUp(_ sender: UITapGestureRecognizer) {
-        let action = SCNAction.rotateBy(x: 0, y: 0, z: kRotationRadianHalfPi, duration: kAnimationDurationMoving)
-        print(selectedBlock.position)
-        selectedBlock.runAction(action)
-    }
-    
-    private func deltas() -> (sin: CGFloat, cos: CGFloat) {
-        return (sin: kMovingLengthPerLoop * CGFloat(sin(selectedBlock.eulerAngles.y)), cos: kMovingLengthPerLoop * CGFloat(cos(selectedBlock.eulerAngles.y)))
-    }
-    
-    private func moveBlock(x: CGFloat, z: CGFloat, sender: UILongPressGestureRecognizer) {
-        let action = SCNAction.moveBy(x: x, y: 0, z: z, duration: kAnimationDurationMoving)
-        execute(action: action, sender: sender)
-    }
-    
-    private func execute(action: SCNAction, sender: UILongPressGestureRecognizer) {
-        let loopAction = SCNAction.repeatForever(action)
-        if sender.state == .began {
-            selectedBlock.runAction(loopAction)
-        } else if sender.state == .ended {
-            selectedBlock.removeAllActions()
-        }
+        selectedBlock.rotateUp(sender: sender)
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
