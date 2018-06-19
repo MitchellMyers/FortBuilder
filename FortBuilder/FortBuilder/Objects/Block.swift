@@ -12,7 +12,7 @@ import ARKit
 class Block: SCNNode {
     
     func loadBlock() {
-        guard let virtualObjectScene = SCNScene(named: "../art.scnassets/ship.scn") else { return }
+        guard let virtualObjectScene = SCNScene(named: "../art.scnassets/block_00.scn") else { return }
         let wrapperNode = SCNNode()
         for child in virtualObjectScene.rootNode.childNodes {
             wrapperNode.addChildNode(child)
