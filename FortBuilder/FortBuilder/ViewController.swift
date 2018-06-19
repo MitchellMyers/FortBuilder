@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-let kStartingPosition = SCNVector3(0, 0, -0.6)
+let kStartingPosition = SCNVector3(0, -0.8, -0.8)
 let kAnimationDurationMoving: TimeInterval = 0.2
 let kMovingLengthPerLoop: CGFloat = 0.05
 let kRotationRadianPerLoop: CGFloat = 0.2
@@ -49,8 +49,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Run the view's session
         configuration.planeDetection = [.horizontal]
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.automaticallyUpdatesLighting = true
         sceneView.session.run(configuration)
-        addInitialBlock()
         
     }
     
@@ -92,7 +93,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
-    func addInitialBlock() {
+    func addInitialBlock(vec : SCNVector3) {
         selectedBlock.loadBlock()
         selectedBlock.position = kStartingPosition
         selectedBlock.rotation = SCNVector4Zero
@@ -152,6 +153,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func rotateBlockUp(_ sender: UITapGestureRecognizer) {
         let action = SCNAction.rotateBy(x: 0, y: 0, z: kRotationRadianHalfPi, duration: kAnimationDurationMoving)
+        print(selectedBlock.position)
         selectedBlock.runAction(action)
     }
     
@@ -188,10 +190,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Make the plane visualization semitransparent to clearly show real-world placement.
         planeNode.opacity = 0.25
+    
         
         // Add the plane visualization to the ARKit-managed node so that it tracks
         // changes in the plane anchor as plane estimation continues.
         node.addChildNode(planeNode)
+        addInitialBlock(vec: planeNode.position)
     }
     
 }
