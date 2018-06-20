@@ -10,7 +10,9 @@ import UIKit
 import SceneKit
 import ARKit
 
-let kStartingPosition = SCNVector3(x: 0.187596142, y: -1.2002033, z: -1.2585659)
+let kStartingPositionXBlock = SCNVector3(x: 0.0, y: -1.2002033, z: -1.0)
+let kStartingPositionYBlock = SCNVector3(x: 0.0, y: 1.0, z: -1.0)
+let kStartingPositionZBlock = SCNVector3(x: 0.0, y: -1.2002033, z: -1.0)
 //let kStartingPosition = SCNVector3(x: 0, y: 0, z: 0)
 let kAnimationDurationMoving: TimeInterval = 0.2
 let kMovingLengthPerLoop: CGFloat = 0.05
@@ -22,7 +24,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     
-    let selectedBlock = Block()
+    var selectedBlock = SCNNode()
     let blockMover = Mover()
     
     
@@ -84,13 +86,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
-    func addInitialBlock(vec : SCNVector3) {
-        selectedBlock.loadBlock()
-        selectedBlock.position = kStartingPosition
-        selectedBlock.rotation = SCNVector4Zero
-        sceneView.scene.rootNode.addChildNode(selectedBlock)
-        print(selectedBlock.boundingBox)
-    }
+//    func addInitialBlock(vec : SCNVector3) {
+//        selectedBlock.loadBlock()
+//        selectedBlock.position = kStartingPosition
+//        selectedBlock.rotation = SCNVector4Zero
+//        sceneView.scene.rootNode.addChildNode(selectedBlock)
+//    }
     
     
     
@@ -121,18 +122,34 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         blockMover.moveBackward(sender: sender, block: selectedBlock)
     }
     
-    @IBAction func rotateBlockRight(_ sender: UITapGestureRecognizer) {
-        selectedBlock.rotateRight(sender: sender)
+    
+    @IBAction func addYBlockToScene(_ sender: UITapGestureRecognizer) {
+        let newYBlock = YBlock()
+        newYBlock.loadYBlock()
+        newYBlock.position = kStartingPositionYBlock
+        newYBlock.rotation = SCNVector4Zero
+        sceneView.scene.rootNode.addChildNode(newYBlock)
+        self.selectedBlock = newYBlock
     }
     
     
-    @IBAction func rotateBlockLeft(_ sender: UITapGestureRecognizer) {
-        selectedBlock.rotateLeft(sender: sender)
+    @IBAction func addXBlockToScene(_ sender: UITapGestureRecognizer) {
+        let newXBlock = XBlock()
+        newXBlock.loadXBlock()
+        newXBlock.position = kStartingPositionXBlock
+        newXBlock.rotation = SCNVector4Zero
+        sceneView.scene.rootNode.addChildNode(newXBlock)
+        self.selectedBlock = newXBlock
     }
     
     
-    @IBAction func rotateBlockUp(_ sender: UITapGestureRecognizer) {
-        selectedBlock.rotateUp(sender: sender)
+    @IBAction func addZBlockToScene(_ sender: UITapGestureRecognizer) {
+        let newZBlock = ZBlock()
+        newZBlock.loadZBlock()
+        newZBlock.position = kStartingPositionZBlock
+        newZBlock.rotation = SCNVector4Zero
+        sceneView.scene.rootNode.addChildNode(newZBlock)
+        self.selectedBlock = newZBlock
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -155,7 +172,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Add the plane visualization to the ARKit-managed node so that it tracks
         // changes in the plane anchor as plane estimation continues.
         node.addChildNode(planeNode)
-        addInitialBlock(vec: planeNode.position)
     }
     
 }
