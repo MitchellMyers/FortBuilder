@@ -17,6 +17,7 @@
 		30089CC620D84CB8001660C8 /* FortBuilderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CC520D84CB8001660C8 /* FortBuilderUITests.swift */; };
 		30089CD520D84D15001660C8 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CD420D84D15001660C8 /* Block.swift */; };
 		30089CD720D97E16001660C8 /* AnchorPointBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CD620D97E16001660C8 /* AnchorPointBuilder.swift */; };
+		E03182F520DA8C8100422176 /* HorizontalBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03182F420DA8C8100422176 /* HorizontalBlock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		30089CC720D84CB8001660C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30089CD420D84D15001660C8 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		30089CD620D97E16001660C8 /* AnchorPointBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorPointBuilder.swift; sourceTree = "<group>"; };
+		E03182F420DA8C8100422176 /* HorizontalBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBlock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			children = (
 				30089CD420D84D15001660C8 /* Block.swift */,
 				30089CD620D97E16001660C8 /* AnchorPointBuilder.swift */,
+				E03182F420DA8C8100422176 /* HorizontalBlock.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				30089CD720D97E16001660C8 /* AnchorPointBuilder.swift in Sources */,
 				30089CA820D84CB6001660C8 /* ViewController.swift in Sources */,
 				30089CA420D84CB6001660C8 /* AppDelegate.swift in Sources */,
+				E03182F520DA8C8100422176 /* HorizontalBlock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,13 +455,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69767D3ZMK;
+				DEVELOPMENT_TEAM = N678APXU9Q;
 				INFOPLIST_FILE = FortBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilder123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -469,13 +473,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69767D3ZMK;
+				DEVELOPMENT_TEAM = N678APXU9Q;
 				INFOPLIST_FILE = FortBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilder123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
