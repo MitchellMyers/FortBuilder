@@ -11,6 +11,7 @@ import SceneKit
 import ARKit
 
 let kStartingPosition = SCNVector3(x: 0.187596142, y: -1.2002033, z: -1.2585659)
+//let kStartingPosition = SCNVector3(x: 0, y: 0, z: 0)
 let kAnimationDurationMoving: TimeInterval = 0.2
 let kMovingLengthPerLoop: CGFloat = 0.05
 let kRotationRadianPerLoop: CGFloat = 0.2
@@ -21,7 +22,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     
-    let selectedBlock = Block();
+    let selectedBlock = Block()
+    let blockMover = Mover()
     
     
     override func viewDidLoad() {
@@ -87,35 +89,36 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         selectedBlock.position = kStartingPosition
         selectedBlock.rotation = SCNVector4Zero
         sceneView.scene.rootNode.addChildNode(selectedBlock)
+        print(selectedBlock.boundingBox)
     }
     
     
     
     @IBAction func moveBlockLeft(_ sender: UILongPressGestureRecognizer) {
-        selectedBlock.moveLeft(sender: sender)
+        blockMover.moveLeft(sender: sender, block: selectedBlock)
     }
     
     
     @IBAction func moveBlockRight(_ sender: UILongPressGestureRecognizer) {
-        selectedBlock.moveRight(sender: sender)
+        blockMover.moveRight(sender: sender, block: selectedBlock)
     }
     
     
     @IBAction func moveBlockUp(_ sender: UILongPressGestureRecognizer) {
-        selectedBlock.moveUp(sender: sender)
+        blockMover.moveUp(sender: sender, block: selectedBlock)
     }
     
     @IBAction func moveBlockDown(_ sender: UILongPressGestureRecognizer) {
-        selectedBlock.moveDown(sender: sender)
+        blockMover.moveDown(sender: sender, block: selectedBlock)
     }
     
     @IBAction func moveBlockForward(_ sender: UILongPressGestureRecognizer) {
-        selectedBlock.moveForward(sender: sender)
+        blockMover.moveForward(sender: sender, block: selectedBlock)
     }
     
     
     @IBAction func moveBlockBack(_ sender: UILongPressGestureRecognizer) {
-        selectedBlock.moveBackward(sender: sender)
+        blockMover.moveBackward(sender: sender, block: selectedBlock)
     }
     
     @IBAction func rotateBlockRight(_ sender: UITapGestureRecognizer) {
