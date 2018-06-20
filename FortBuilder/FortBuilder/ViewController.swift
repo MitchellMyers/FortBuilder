@@ -26,6 +26,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     var selectedBlock = SCNNode()
     let blockMover = Mover()
+    var currentFort = Fort()
     
     
     override func viewDidLoad() {
@@ -151,6 +152,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene.rootNode.addChildNode(newZBlock)
         self.selectedBlock = newZBlock
     }
+    
+    @IBAction func addBlockToFort(_ sender: UITapGestureRecognizer) {
+        currentFort.addBlock(block: selectedBlock)
+    }
+    
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         // Place content only for anchors found by plane detection.

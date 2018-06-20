@@ -94,6 +94,15 @@
                                     <outletCollection property="gestureRecognizers" destination="vM0-9j-bGR" appends="YES" id="K9a-Q6-Do2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sG8-Hj-sau">
+                                <rect key="frame" x="251" y="484" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Add To Fort"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="JV9-cM-T2Z" appends="YES" id="aM9-ke-eq0"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glD-xV-Pid">
                                 <rect key="frame" x="238" y="522" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -155,6 +164,11 @@
                 <tapGestureRecognizer id="vM0-9j-bGR">
                     <connections>
                         <action selector="addZBlockToScene:" destination="BV1-FR-VrT" id="z9t-LA-YxT"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="JV9-cM-T2Z">
+                    <connections>
+                        <action selector="addBlockToFort:" destination="BV1-FR-VrT" id="9Ix-BI-AHF"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
