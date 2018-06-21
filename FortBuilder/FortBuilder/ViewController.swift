@@ -136,7 +136,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         newYBlock.position = kStartingPositionYBlock
         newYBlock.rotation = SCNVector4Zero
         sceneView.scene.rootNode.addChildNode(newYBlock)
-        newYBlock.opacity = 0.5
+        newYBlock.opacity = 0.75
         self.selectedBlock = newYBlock
     }
     
@@ -147,7 +147,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         newXBlock.position = kStartingPositionXBlock
         newXBlock.rotation = SCNVector4Zero
         sceneView.scene.rootNode.addChildNode(newXBlock)
-        newXBlock.opacity = 0.5
+        newXBlock.opacity = 0.75
         self.selectedBlock = newXBlock
     }
     
@@ -158,7 +158,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         newZBlock.position = kStartingPositionZBlock
         newZBlock.rotation = SCNVector4Zero
         sceneView.scene.rootNode.addChildNode(newZBlock)
-        newZBlock.opacity = 0.5
+        newZBlock.opacity = 0.75
         self.selectedBlock = newZBlock
     }
     
@@ -170,7 +170,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     private func checkPoximities() {
         let proxTuple = currentFort.checkProximity(selectedBlock: selectedBlock)
         if proxTuple.0 != selectedBlock {
-            print(proxTuple)
+            // TODO: Call function that adds block to the anchor point location
+//            print(proxTuple)
+            print("Finding the link block!!")
+            let newBlockPos = blockMover.linkBlocks(blockTuple: (proxTuple.0, selectedBlock), anchorTuple: (proxTuple.1, proxTuple.2))
+            let tempBox = selectedBlock.getBox()
+            let material = SCNMaterial()
+            material.diffuse.contents = UIColor.blue
+            tempBox.materials = [material]
+            let tempBlockNode = SCNNode(geometry: tempBox)
+            tempBlockNode.opacity = 0.75
+            tempBlockNode.position = newBlockPos
+            sceneView.scene.rootNode.addChildNode(tempBlockNode)
         }
     }
     
