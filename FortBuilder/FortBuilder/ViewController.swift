@@ -136,6 +136,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         newYBlock.position = kStartingPositionYBlock
         newYBlock.rotation = SCNVector4Zero
         sceneView.scene.rootNode.addChildNode(newYBlock)
+        newYBlock.opacity = 0.5
         self.selectedBlock = newYBlock
     }
     
@@ -146,6 +147,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         newXBlock.position = kStartingPositionXBlock
         newXBlock.rotation = SCNVector4Zero
         sceneView.scene.rootNode.addChildNode(newXBlock)
+        newXBlock.opacity = 0.5
         self.selectedBlock = newXBlock
     }
     
@@ -156,10 +158,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         newZBlock.position = kStartingPositionZBlock
         newZBlock.rotation = SCNVector4Zero
         sceneView.scene.rootNode.addChildNode(newZBlock)
+        newZBlock.opacity = 0.5
         self.selectedBlock = newZBlock
     }
     
     @IBAction func addBlockToFort(_ sender: UITapGestureRecognizer) {
+        selectedBlock.opacity = 1.0
         currentFort.addBlock(block: selectedBlock)
     }
     
