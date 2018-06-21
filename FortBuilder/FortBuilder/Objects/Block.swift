@@ -20,19 +20,24 @@ class Block: SCNNode {
         material.diffuse.contents = UIImage(named: "../art.scnassets/wooden_texture.png")
         box.materials = [material]
         
-        // get Anchor Point locations
-        let anchorPointLocations = getAnchorPointVectors(block: box)
-        // create anchor point for each location
-        let anchorPointBuilder = AnchorPointBuilder()
-        for anchor in anchorPointLocations {
-            let ap = anchorPointBuilder.getNewAnchorPoint()
-            ap.position = anchor
-            addChildNode(ap)
-        }
+//        // get Anchor Point locations
+//        let anchorPointLocations = getAnchorPointVectors(block: box)
+//        // create anchor point for each location
+//        let anchorPointBuilder = AnchorPointBuilder()
+//        for anchor in anchorPointLocations {
+//            let ap = anchorPointBuilder.getNewAnchorPoint()
+//            ap.position = anchor
+//            addChildNode(ap)
+//        }
         
         let wrapperNode = SCNNode(geometry: box)
         
         addChildNode(wrapperNode)
+    }
+    
+    func getAnchorPoints() -> Array<SCNVector3> {
+        let anchors = [SCNVector3]()
+        return anchors
     }
     
     /*
@@ -42,11 +47,11 @@ class Block: SCNNode {
      */
     func getAnchorPointVectors(block: SCNBox) -> Array<SCNVector3> {
         // Instantiate Return Array
-        var anchorPointsArray: Array<SCNVector3> = Array()
+        let anchorPointsArray: Array<SCNVector3> = Array()
         
         // Get anchor points
-        anchorPointsArray.append(SCNVector3Make(Float(kStartingPosition.x) + Float(block.width / 2),  Float(kStartingPosition.y), Float(kStartingPosition.z)))
-        anchorPointsArray.append(SCNVector3Make(Float(kStartingPosition.x) - Float(block.width / 2), Float(kStartingPosition.y), Float(kStartingPosition.z)))
+//        anchorPointsArray.append(SCNVector3Make(Float(kStartingPosition.x) + Float(block.width / 2),  Float(kStartingPosition.y), Float(kStartingPosition.z)))
+//        anchorPointsArray.append(SCNVector3Make(Float(kStartingPosition.x) - Float(block.width / 2), Float(kStartingPosition.y), Float(kStartingPosition.z)))
         
         // Return array
         return anchorPointsArray

@@ -24,7 +24,7 @@ class ZBlock: Block {
         addChildNode(wrapperNode)
     }
     
-    func getAnchorPoints() -> Array<SCNVector3> {
+    override func getAnchorPoints() -> Array<SCNVector3> {
         var anchors = [SCNVector3]()
         anchors.append(SCNVector3Make(self.position.x, self.position.y, self.position.z - 0.49))
         anchors.append(SCNVector3Make(self.position.x, self.position.y, self.position.z + 0.49))

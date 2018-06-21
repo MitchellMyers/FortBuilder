@@ -11,7 +11,7 @@ import SceneKit
 import ARKit
 
 let kStartingPositionXBlock = SCNVector3(x: 0.0, y: -1.2002033, z: -1.0)
-let kStartingPositionYBlock = SCNVector3(x: 0.0, y: 1.0, z: -1.0)
+let kStartingPositionYBlock = SCNVector3(x: 0.0, y: -0.3, z: -1.0)
 let kStartingPositionZBlock = SCNVector3(x: 0.0, y: -1.2002033, z: -1.0)
 //let kStartingPosition = SCNVector3(x: 0, y: 0, z: 0)
 let kAnimationDurationMoving: TimeInterval = 0.2
@@ -24,7 +24,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     
-    var selectedBlock = SCNNode()
+    var selectedBlock = Block()
     let blockMover = Mover()
     var currentFort = Fort()
     
@@ -98,29 +98,35 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func moveBlockLeft(_ sender: UILongPressGestureRecognizer) {
         blockMover.moveLeft(sender: sender, block: selectedBlock)
+        checkPoximities()
     }
     
     
     @IBAction func moveBlockRight(_ sender: UILongPressGestureRecognizer) {
         blockMover.moveRight(sender: sender, block: selectedBlock)
+        checkPoximities()
     }
     
     
     @IBAction func moveBlockUp(_ sender: UILongPressGestureRecognizer) {
         blockMover.moveUp(sender: sender, block: selectedBlock)
+        checkPoximities()
     }
     
     @IBAction func moveBlockDown(_ sender: UILongPressGestureRecognizer) {
         blockMover.moveDown(sender: sender, block: selectedBlock)
+        checkPoximities()
     }
     
     @IBAction func moveBlockForward(_ sender: UILongPressGestureRecognizer) {
         blockMover.moveForward(sender: sender, block: selectedBlock)
+        checkPoximities()
     }
     
     
     @IBAction func moveBlockBack(_ sender: UILongPressGestureRecognizer) {
         blockMover.moveBackward(sender: sender, block: selectedBlock)
+        checkPoximities()
     }
     
     
@@ -155,6 +161,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func addBlockToFort(_ sender: UITapGestureRecognizer) {
         currentFort.addBlock(block: selectedBlock)
+    }
+    
+    private func checkPoximities() {
+        let proxTuple = currentFort.checkProximity(selectedBlock: selectedBlock)
+        if proxTuple.0 != selectedBlock {
+            print(proxTuple)
+        }
     }
     
     
