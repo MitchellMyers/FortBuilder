@@ -11,66 +11,50 @@ import ARKit
 
 class Mover {
     
-    func moveLeft(sender: UILongPressGestureRecognizer, block: SCNNode) {
+    func moveLeft(sender: UILongPressGestureRecognizer, block: Block) {
         let x = -deltas(block: block).cos
         let z = deltas(block: block).sin
         moveBlock(x: x, z: z, sender: sender, block: block)
     }
     
-    func moveRight(sender: UILongPressGestureRecognizer, block: SCNNode) {
+    func moveRight(sender: UILongPressGestureRecognizer, block: Block) {
         let x = deltas(block: block).cos
         let z = -deltas(block: block).sin
         moveBlock(x: x, z: z, sender: sender, block: block)
     }
     
-    func moveUp(sender: UILongPressGestureRecognizer, block: SCNNode) {
+    func moveUp(sender: UILongPressGestureRecognizer, block: Block) {
         let action = SCNAction.moveBy(x: 0, y: kMovingLengthPerLoop, z: 0, duration: kAnimationDurationMoving)
         execute(action: action, sender: sender, block: block)
     }
     
-    func moveDown(sender: UILongPressGestureRecognizer, block: SCNNode) {
+    func moveDown(sender: UILongPressGestureRecognizer, block: Block) {
         let action = SCNAction.moveBy(x: 0, y: -kMovingLengthPerLoop, z: 0, duration: kAnimationDurationMoving)
         execute(action: action, sender: sender, block: block)
     }
     
-    func moveForward(sender: UILongPressGestureRecognizer, block: SCNNode) {
+    func moveForward(sender: UILongPressGestureRecognizer, block: Block) {
         let x = -deltas(block: block).sin
         let z = -deltas(block: block).cos
         moveBlock(x: x, z: z, sender: sender, block: block)
     }
     
-    func moveBackward(sender: UILongPressGestureRecognizer, block: SCNNode) {
+    func moveBackward(sender: UILongPressGestureRecognizer, block: Block) {
         let x = deltas(block: block).sin
         let z = deltas(block: block).cos
         moveBlock(x: x, z: z, sender: sender, block: block)
     }
     
-//    func rotateLeft(sender: UITapGestureRecognizer) {
-//        let action = SCNAction.rotateBy(x: 0, y: kRotationRadianHalfPi, z: 0, duration: kAnimationDurationMoving)
-//        self.runAction(action)
-//    }
-//
-//    func rotateRight(sender: UITapGestureRecognizer) {
-//        let action = SCNAction.rotateBy(x: 0, y: -kRotationRadianHalfPi, z: 0, duration: kAnimationDurationMoving)
-//        self.runAction(action)
-//    }
-//
-//    func rotateUp(sender: UITapGestureRecognizer) {
-//        let action = SCNAction.rotateBy(x: 0, y: 0, z: kRotationRadianHalfPi, duration: kAnimationDurationMoving)
-//        print(self.position)
-//        self.runAction(action)
-//    }
-    
-    private func deltas(block: SCNNode) -> (sin: CGFloat, cos: CGFloat) {
+    private func deltas(block: Block) -> (sin: CGFloat, cos: CGFloat) {
         return (sin: kMovingLengthPerLoop * CGFloat(sin(block.eulerAngles.y)), cos: kMovingLengthPerLoop * CGFloat(cos(block.eulerAngles.y)))
     }
     
-    private func moveBlock(x: CGFloat, z: CGFloat, sender: UILongPressGestureRecognizer, block: SCNNode) {
+    private func moveBlock(x: CGFloat, z: CGFloat, sender: UILongPressGestureRecognizer, block: Block) {
         let action = SCNAction.moveBy(x: x, y: 0, z: z, duration: kAnimationDurationMoving)
         execute(action: action, sender: sender, block: block)
     }
     
-    private func execute(action: SCNAction, sender: UILongPressGestureRecognizer, block: SCNNode) {
+    private func execute(action: SCNAction, sender: UILongPressGestureRecognizer, block: Block) {
         let loopAction = SCNAction.repeatForever(action)
         if sender.state == .began {
             block.runAction(loopAction)
