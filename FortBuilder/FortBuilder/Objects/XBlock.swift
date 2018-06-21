@@ -11,6 +11,8 @@ import ARKit
 
 class XBlock: Block {
     
+    var myBox = SCNBox()
+    
     /* Loads in a HorizontalBlock
      Parameters: None
      Returns: None
@@ -21,6 +23,7 @@ class XBlock: Block {
         material.diffuse.contents = UIImage(named: "art.scnassets/wooden_texture.jpg")
         box.materials = [material]
         let wrapperNode = SCNNode(geometry: box)
+        myBox = box
         addChildNode(wrapperNode)
     }
     
@@ -29,6 +32,10 @@ class XBlock: Block {
         anchors.append(SCNVector3Make(self.position.x - 0.49, self.position.y, self.position.z))
         anchors.append(SCNVector3Make(self.position.x + 0.49, self.position.y, self.position.z))
         return anchors
+    }
+    
+    override func getBox() -> SCNBox {
+        return myBox
     }
     
 }

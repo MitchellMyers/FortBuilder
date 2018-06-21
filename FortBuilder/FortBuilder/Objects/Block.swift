@@ -20,11 +20,14 @@ class Block: SCNNode {
         material.diffuse.contents = UIImage(named: "../art.scnassets/wooden_texture.png")
         box.materials = [material]
         
-  
         
         let wrapperNode = SCNNode(geometry: box)
         
         addChildNode(wrapperNode)
+    }
+    
+    func getBox() -> SCNBox {
+        return SCNBox()
     }
     
     /*

@@ -11,6 +11,8 @@ import ARKit
 
 class ZBlock: Block {
     
+    var myBox = SCNBox()
+    
     /* Loads in a HorizontalBlock
      Parameters: None
      Returns: None
@@ -20,6 +22,7 @@ class ZBlock: Block {
         let material = SCNMaterial()
         material.diffuse.contents = UIImage(named: "art.scnassets/wooden_texture.jpg")
         box.materials = [material]
+        myBox = box
         let wrapperNode = SCNNode(geometry: box)
         addChildNode(wrapperNode)
     }
@@ -29,6 +32,10 @@ class ZBlock: Block {
         anchors.append(SCNVector3Make(self.position.x, self.position.y, self.position.z - 0.49))
         anchors.append(SCNVector3Make(self.position.x, self.position.y, self.position.z + 0.49))
         return anchors
+    }
+    
+    override func getBox() -> SCNBox {
+        return myBox
     }
     
 }
