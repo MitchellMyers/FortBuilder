@@ -18,7 +18,7 @@ class XBlock: Block {
     func loadXBlock() {
         let box = SCNBox(width: 1.0, height: 0.2, length: 0.2, chamferRadius: 0)
         let material = SCNMaterial()
-        material.diffuse.contents = UIImage(named: "../art.scnassets/wooden_texture.png")
+        material.diffuse.contents = UIImage(named: "art.scnassets/wooden_texture.jpg")
         box.materials = [material]
         let wrapperNode = SCNNode(geometry: box)
         addChildNode(wrapperNode)

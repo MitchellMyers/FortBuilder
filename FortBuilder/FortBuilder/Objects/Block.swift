@@ -21,35 +21,35 @@ class Block: SCNNode {
         box.materials = [material]
         
         // get Anchor Point locations
-        let anchorPointLocations = getAnchorPointVectors(block: box)
+//        let anchorPointLocations = getAnchorPointVectors(block: box)
         // create anchor point for each location
-        let anchorPointBuilder = AnchorPointBuilder()
-        for anchor in anchorPointLocations {
-            let ap = anchorPointBuilder.getNewAnchorPoint()
-            ap.position = anchor
-            addChildNode(ap)
-        }
+//        let anchorPointBuilder = AnchorPointBuilder()
+//        for anchor in anchorPointLocations {
+//            let ap = anchorPointBuilder.getNewAnchorPoint()
+//            ap.position = anchor
+//            addChildNode(ap)
+//        }
         
         let wrapperNode = SCNNode(geometry: box)
         
         addChildNode(wrapperNode)
     }
     
-    /*
-     Function that finds the anchor points for a block
-     Params: block: SCNBox
-     Returns: anchorPointsArray: Array<SCNVector3> - array of SCNVectors representing the anchor points
-     */
-    func getAnchorPointVectors(block: SCNBox) -> Array<SCNVector3> {
-        // Instantiate Return Array
-        var anchorPointsArray: Array<SCNVector3> = Array()
-        
-        // Get anchor points
-        anchorPointsArray.append(SCNVector3Make(Float(kStartingPosition.x) + Float(block.width / 2),  Float(kStartingPosition.y), Float(kStartingPosition.z)))
-        anchorPointsArray.append(SCNVector3Make(Float(kStartingPosition.x) - Float(block.width / 2), Float(kStartingPosition.y), Float(kStartingPosition.z)))
-        
-        // Return array
-        return anchorPointsArray
-    }
+//    /*
+//     Function that finds the anchor points for a block
+//     Params: block: SCNBox
+//     Returns: anchorPointsArray: Array<SCNVector3> - array of SCNVectors representing the anchor points
+//     */
+//    func getAnchorPointVectors(block: SCNBox) -> Array<SCNVector3> {
+//        // Instantiate Return Array
+//        var anchorPointsArray: Array<SCNVector3> = Array()
+//
+//        // Get anchor points
+//        anchorPointsArray.append(SCNVector3Make(Float(kStartingPosition.x) + Float(block.width / 2),  Float(kStartingPosition.y), Float(kStartingPosition.z)))
+//        anchorPointsArray.append(SCNVector3Make(Float(kStartingPosition.x) - Float(block.width / 2), Float(kStartingPosition.y), Float(kStartingPosition.z)))
+//
+//        // Return array
+//        return anchorPointsArray
+//    }
     
 }
