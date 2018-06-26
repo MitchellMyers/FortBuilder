@@ -21,7 +21,7 @@ class Fort {
         for fortBlock in fortBlocks {
             for fbAnchor in fortBlock.getAnchorPoints() {
                 for sbAnchor in selectedBlock.getAnchorPoints() {
-                    if (getDistance(blockOnePos: fbAnchor, blockTwoPos: sbAnchor) < 0.2) {
+                    if (getDistance(blockOnePos: fbAnchor, blockTwoPos: sbAnchor) < 0.4) {
                         return (fortBlock, fbAnchor, sbAnchor)
                     }
                 }

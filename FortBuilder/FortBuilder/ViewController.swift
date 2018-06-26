@@ -25,6 +25,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     
     var selectedBlock = Block()
+    var temporaryBlock = SCNNode()
     let blockMover = Mover()
     var currentFort = Fort()
     
@@ -175,12 +176,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             print("Finding the link block!!")
             let newBlockPos = blockMover.linkBlocks(blockTuple: (proxTuple.0, selectedBlock), anchorTuple: (proxTuple.1, proxTuple.2))
             let tempBox = selectedBlock.getBox()
+            let newBox = SCNBox(width: tempBox.width, height: tempBox.height, length: tempBox.length, chamferRadius: 0.0)
             let material = SCNMaterial()
             material.diffuse.contents = UIColor.blue
-            tempBox.materials = [material]
-            let tempBlockNode = SCNNode(geometry: tempBox)
+            newBox.materials = [material]
+            let tempBlockNode = SCNNode(geometry: newBox)
             tempBlockNode.opacity = 0.75
             tempBlockNode.position = newBlockPos
+            temporaryBlock = tempBlockNode
             sceneView.scene.rootNode.addChildNode(tempBlockNode)
         }
     }

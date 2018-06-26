@@ -29,8 +29,8 @@ class YBlock: Block {
     
     override func getAnchorPoints() -> Array<SCNVector3> {
         var anchors = [SCNVector3]()
-        anchors.append(SCNVector3Make(self.position.x, self.position.y - 0.49, self.position.z))
-        anchors.append(SCNVector3Make(self.position.x, self.position.y + 0.49, self.position.z))
+        anchors.append(SCNVector3Make(self.position.x, self.position.y - 0.40, self.position.z))
+        anchors.append(SCNVector3Make(self.position.x, self.position.y + 0.40, self.position.z))
         return anchors
     }
     
