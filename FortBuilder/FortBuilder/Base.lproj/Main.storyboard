@@ -24,6 +24,9 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7i3-Oj-9gF">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ICi-WE-YWW" appends="YES" id="NeD-yf-iMP"/>
+                                </connections>
                             </arscnView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDc-ia-537">
                                 <rect key="frame" x="278" y="702" width="56" height="30"/>
@@ -171,6 +174,11 @@
                 <tapGestureRecognizer id="JV9-cM-T2Z">
                     <connections>
                         <action selector="addBlockToFort:" destination="BV1-FR-VrT" id="9Ix-BI-AHF"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="ICi-WE-YWW">
+                    <connections>
+                        <action selector="didReceiveScreenTap:" destination="BV1-FR-VrT" id="nDP-Ed-tNr"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

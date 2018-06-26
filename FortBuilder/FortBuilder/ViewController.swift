@@ -30,9 +30,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var currentFort = Fort()
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -44,6 +45,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        // Allow user interaction
+        sceneView.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,15 +91,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
-    
-//    func addInitialBlock(vec : SCNVector3) {
-//        selectedBlock.loadBlock()
-//        selectedBlock.position = kStartingPosition
-//        selectedBlock.rotation = SCNVector4Zero
-//        sceneView.scene.rootNode.addChildNode(selectedBlock)
-//    }
-    
-    
     
     @IBAction func moveBlockLeft(_ sender: UILongPressGestureRecognizer) {
         blockMover.moveLeft(sender: sender, block: selectedBlock)
@@ -183,9 +178,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         let proxTuple = currentFort.checkProximity(selectedBlock: selectedBlock)
         if proxTuple.0 != selectedBlock {
-            // TODO: Call function that adds block to the anchor point location
-//            print(proxTuple)
-            print("Finding the link block!!")
             let newBlockPos = blockMover.linkBlocks(blockTuple: (proxTuple.0, selectedBlock), anchorTuple: (proxTuple.1, proxTuple.2))
             let tempBox = selectedBlock.getBox()
             let newBox = SCNBox(width: tempBox.width, height: tempBox.height, length: tempBox.length, chamferRadius: 0.0)
@@ -199,6 +191,25 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             sceneView.scene.rootNode.addChildNode(tempBlockNode)
         }
     }
+    
+    @IBAction func didReceiveScreenTap(_ sender: UITapGestureRecognizer) {
+        
+        if sender.state == .ended {
+            let location: CGPoint = sender.location(in: sceneView)
+            let hits = self.sceneView.hitTest(location, options: nil)
+            if let tappednode = hits.first?.node {
+                let material = SCNMaterial()
+                material.diffuse.contents = UIColor.red
+                tappednode.geometry?.materials=[material]
+                for node in sceneView.scene.rootNode.childNodes {
+                    if (tappednode.name == node.name) && (((node as? Block) != nil)) {
+                        selectedBlock = node as! Block
+                    }
+                }
+            }
+        }
+    }
+    
     
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
