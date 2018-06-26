@@ -175,23 +175,35 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 temporaryBlock?.removeFromParentNode()
                 temporaryBlock = nil
             }
-        }
-        let proxTuple = currentFort.checkProximity(selectedBlock: selectedBlock)
-        if proxTuple.0 != selectedBlock {
-            let newBlockPos = blockMover.linkBlocks(blockTuple: (proxTuple.0, selectedBlock), anchorTuple: (proxTuple.1, proxTuple.2))
-            let tempBox = selectedBlock.getBox()
-            let newBox = SCNBox(width: tempBox.width, height: tempBox.height, length: tempBox.length, chamferRadius: 0.0)
-            let material = SCNMaterial()
-            material.diffuse.contents = UIColor.blue
-            newBox.materials = [material]
-            let tempBlockNode = SCNNode(geometry: newBox)
-            tempBlockNode.opacity = 0.50
-            tempBlockNode.position = newBlockPos
-            temporaryBlock = tempBlockNode
-            sceneView.scene.rootNode.addChildNode(tempBlockNode)
+        } else {
+            let proxTuple = currentFort.checkProximity(selectedBlock: selectedBlock)
+            if proxTuple.0 != selectedBlock {
+                let newBlockPos = blockMover.linkBlocks(blockTuple: (proxTuple.0, selectedBlock), anchorTuple: (proxTuple.1, proxTuple.2))
+                if !fortBlockPositionExists(blockPos: newBlockPos) {
+                    let tempBox = selectedBlock.getBox()
+                    let newBox = SCNBox(width: tempBox.width, height: tempBox.height, length: tempBox.length, chamferRadius: 0.0)
+                    let material = SCNMaterial()
+                    material.diffuse.contents = UIColor.red
+                    newBox.materials = [material]
+                    temporaryBlock = SCNNode(geometry: newBox)
+                    temporaryBlock?.opacity = 0.50
+                    temporaryBlock?.position = newBlockPos
+                    sceneView.scene.rootNode.addChildNode(temporaryBlock!)
+                }
+            }
         }
     }
     
+    private func fortBlockPositionExists(blockPos: SCNVector3) -> Bool {
+        var blockExists = false
+        for block in currentFort.getFortBlocks() {
+            if SCNVector3EqualToVector3(block.position, blockPos) {
+                blockExists = true
+            }
+        }
+        return blockExists
+    }
+            
     @IBAction func didReceiveScreenTap(_ sender: UITapGestureRecognizer) {
         
         if sender.state == .ended {
@@ -209,8 +221,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             }
         }
     }
-    
-    
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         // Place content only for anchors found by plane detection.

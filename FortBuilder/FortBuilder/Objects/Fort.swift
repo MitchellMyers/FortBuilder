@@ -30,8 +30,12 @@ class Fort {
         return (selectedBlock, SCNVector3Make(0.0, 0.0, 0.0), SCNVector3Make(0.0, 0.0, 0.0))
     }
     
+    func getFortBlocks() -> [Block] {
+        return self.fortBlocks
+    }
+    
     func getDistance(blockOnePos: SCNVector3, blockTwoPos: SCNVector3) -> Float {
-        return sqrt((blockTwoPos.x - blockOnePos.x) + (blockTwoPos.y - blockOnePos.y) + (blockTwoPos.z - blockOnePos.z))
+        return sqrtf(pow((blockTwoPos.x - blockOnePos.x), 2.0) + pow((blockTwoPos.y - blockOnePos.y), 2.0) + pow((blockTwoPos.z - blockOnePos.z), 2.0))
     }
     
 }

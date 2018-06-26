@@ -39,7 +39,5 @@ class Block: SCNNode {
         let anchors = [SCNVector3]()
         return anchors
     }
-    
-    
-    
+
 }

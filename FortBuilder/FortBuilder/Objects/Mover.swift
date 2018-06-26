@@ -54,6 +54,7 @@ class Mover {
         execute(action: action, sender: sender, block: block)
     }
     
+
     /* Move block to anchor point location
      Params: blockTuple(fortBlock, selectedBlock), anchorTuple(fortBlockAnchor, selectedBlockAnchor)
      Returns: undetermined
@@ -83,14 +84,14 @@ class Mover {
             }
         // Y and Y
         case (blockTuple.0 as? YBlock, blockTuple.1 as? YBlock):
-            if (fortBlockX > selectBlockX) {
+            if (fortBlockY > selectBlockY) {
                 selectBlockPos = SCNVector3Make(fortBlockAnchorX, fortBlockAnchorY - 0.6, fortBlockAnchorZ)
             } else {
                 selectBlockPos = SCNVector3Make(fortBlockAnchorX, fortBlockAnchorY + 0.6, fortBlockAnchorZ)
             }
         // Z and Z
         case (blockTuple.0 as? ZBlock, blockTuple.1 as? ZBlock):
-            if (fortBlockX > selectBlockX) {
+            if (fortBlockZ > selectBlockZ) {
                 selectBlockPos = SCNVector3Make(fortBlockAnchorX, fortBlockAnchorY, fortBlockAnchorZ - 0.6)
             } else {
                 selectBlockPos = SCNVector3Make(fortBlockAnchorX, fortBlockAnchorY, fortBlockAnchorZ + 0.6)
@@ -118,29 +119,33 @@ class Mover {
             } else if (fortBlockX < selectBlockX) && (fortBlockY > selectBlockY) {
                 selectBlockPos = SCNVector3Make(fortBlockAnchorX + 0.4, fortBlockAnchorY - 0.2, fortBlockAnchorZ)
             } else if (fortBlockX < selectBlockX) && (fortBlockY < selectBlockY) {
-                selectBlockPos = SCNVector3Make(fortBlockAnchorX + 0.4, fortBlockAnchorY - 0.2, fortBlockAnchorZ)
+                selectBlockPos = SCNVector3Make(fortBlockAnchorX + 0.4, fortBlockAnchorY + 0.2, fortBlockAnchorZ)
             }
         // Y and Z
         case (blockTuple.0 as? YBlock, blockTuple.1 as? ZBlock):
             if (fortBlockZ > selectBlockZ) && (fortBlockY > selectBlockY) {
                 selectBlockPos = SCNVector3Make(fortBlockAnchorX, fortBlockAnchorY - 0.2, fortBlockAnchorZ - 0.4)
-            } else if (fortBlockZ > selectBlockZ) && (fortBlockY < selectBlockY) {
+            } else if (fortBlockZ > selectBlockZ) && (fortBlockY <= selectBlockY) {
                 selectBlockPos = SCNVector3Make(fortBlockAnchorX, fortBlockAnchorY + 0.2, fortBlockAnchorZ - 0.4)
-            } else if (fortBlockZ < selectBlockZ) && (fortBlockY > selectBlockY) {
-                selectBlockPos = SCNVector3Make(fortBlockAnchorX, fortBlockAnchorY - 0.2, fortBlockAnchorZ - 0.4)
-            } else if (fortBlockZ < selectBlockZ) && (fortBlockY < selectBlockY) {
+            } else if (fortBlockZ <= selectBlockZ) && (fortBlockY > selectBlockY) {
+                selectBlockPos = SCNVector3Make(fortBlockAnchorX, fortBlockAnchorY - 0.2, fortBlockAnchorZ + 0.4)
+            } else if (fortBlockZ <= selectBlockZ) && (fortBlockY <= selectBlockY) {
                 selectBlockPos = SCNVector3Make(fortBlockAnchorX, fortBlockAnchorY + 0.2, fortBlockAnchorZ + 0.4)
             }
         // Z and X
         case (blockTuple.0 as? ZBlock, blockTuple.1 as? XBlock):
-            if (fortBlockZ > selectBlockZ) {
-                selectBlockPos = SCNVector3Make(fortBlockAnchorX - 0.6, fortBlockAnchorY, fortBlockAnchorZ)
-            } else {
-                selectBlockPos = SCNVector3Make(fortBlockAnchorX + 0.6, fortBlockAnchorY, fortBlockAnchorZ)
+            if (fortBlockX > selectBlockX && fortBlockZ > selectBlockZ) {
+                selectBlockPos = SCNVector3Make(fortBlockAnchorX - 0.4, fortBlockAnchorY, fortBlockAnchorZ - 0.2)
+            } else if (fortBlockX > selectBlockX && fortBlockZ <= selectBlockZ) {
+                selectBlockPos = SCNVector3Make(fortBlockAnchorX - 0.4, fortBlockAnchorY, fortBlockAnchorZ + 0.2)
+            } else if (fortBlockX <= selectBlockX && fortBlockZ > selectBlockZ) {
+                selectBlockPos = SCNVector3Make(fortBlockAnchorX + 0.4, fortBlockAnchorY, fortBlockAnchorZ - 0.2)
+            } else if (fortBlockX <= selectBlockX && fortBlockZ <= selectBlockZ) {
+                selectBlockPos = SCNVector3Make(fortBlockAnchorX + 0.4, fortBlockAnchorY, fortBlockAnchorZ + 0.2)
             }
         // Z and Y
         case (blockTuple.0 as? ZBlock, blockTuple.1 as? YBlock):
-            if (fortBlockZ > selectBlockZ) {
+            if (fortBlockY > selectBlockY) {
                 selectBlockPos = SCNVector3Make(fortBlockAnchorX, fortBlockAnchorY - 0.6, fortBlockAnchorZ)
             } else {
                 selectBlockPos = SCNVector3Make(fortBlockAnchorX, fortBlockAnchorY + 0.6, fortBlockAnchorZ)
@@ -151,7 +156,6 @@ class Mover {
         }
         return selectBlockPos
     }
-            
     
     private func execute(action: SCNAction, sender: UILongPressGestureRecognizer, block: Block) {
         let loopAction = SCNAction.repeatForever(action)
