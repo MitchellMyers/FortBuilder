@@ -30,7 +30,7 @@ class Fort {
         return (selectedBlock, SCNVector3Make(0.0, 0.0, 0.0), SCNVector3Make(0.0, 0.0, 0.0))
     }
     
-    private func getDistance(blockOnePos: SCNVector3, blockTwoPos: SCNVector3) -> Float {
+    func getDistance(blockOnePos: SCNVector3, blockTwoPos: SCNVector3) -> Float {
         return sqrt((blockTwoPos.x - blockOnePos.x) + (blockTwoPos.y - blockOnePos.y) + (blockTwoPos.z - blockOnePos.z))
     }
     

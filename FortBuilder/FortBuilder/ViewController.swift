@@ -25,7 +25,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     
     var selectedBlock = Block()
-    var temporaryBlock = SCNNode()
+    var temporaryBlock : SCNNode? = nil
     let blockMover = Mover()
     var currentFort = Fort()
     
@@ -164,11 +164,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func addBlockToFort(_ sender: UITapGestureRecognizer) {
+        if temporaryBlock != nil {
+            selectedBlock.position = (temporaryBlock?.position)!
+            temporaryBlock?.removeFromParentNode()
+            temporaryBlock = nil
+        }
         selectedBlock.opacity = 1.0
         currentFort.addBlock(block: selectedBlock)
     }
     
     private func checkPoximities() {
+        if temporaryBlock != nil {
+            let tempDist = currentFort.getDistance(blockOnePos: (temporaryBlock?.position)!, blockTwoPos: selectedBlock.position)
+            if tempDist > 0.4 {
+                temporaryBlock?.removeFromParentNode()
+                temporaryBlock = nil
+            }
+        }
         let proxTuple = currentFort.checkProximity(selectedBlock: selectedBlock)
         if proxTuple.0 != selectedBlock {
             // TODO: Call function that adds block to the anchor point location
@@ -181,7 +193,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             material.diffuse.contents = UIColor.blue
             newBox.materials = [material]
             let tempBlockNode = SCNNode(geometry: newBox)
-            tempBlockNode.opacity = 0.75
+            tempBlockNode.opacity = 0.50
             tempBlockNode.position = newBlockPos
             temporaryBlock = tempBlockNode
             sceneView.scene.rootNode.addChildNode(tempBlockNode)
