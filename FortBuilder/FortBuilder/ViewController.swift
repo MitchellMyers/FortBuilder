@@ -239,7 +239,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 parentBlock?.geometry?.materials=[material]
                 parentBlock?.opacity = 0.50
                 parentBlock?.childNodes[0].geometry?.materials = [material]
-                currentFort.removeBlock(block: parentBlock!)
+                currentFort.removeBlock(block: parentBlock ?? Block())
                 selectedBlock = parentBlock ?? selectedBlock
             }
         }
