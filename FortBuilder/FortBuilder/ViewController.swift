@@ -28,8 +28,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var temporaryBlock : SCNNode? = nil
     let blockMover = Mover()
     var currentFort = Fort()
+    var sceneBlocks = [SCNNode]()
     
     
+    @IBOutlet var addToFortButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Allow user interaction
         sceneView.isUserInteractionEnabled = true
+        
+        addToFortButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,6 +131,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     
     @IBAction func addYBlockToScene(_ sender: UITapGestureRecognizer) {
+        let enabledButton = sceneBlocks.count > 0 ? false : true
+        addToFortButton.isEnabled = enabledButton
         let newYBlock = YBlock()
         newYBlock.loadYBlock()
         newYBlock.position = kStartingPositionYBlock
@@ -134,10 +140,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene.rootNode.addChildNode(newYBlock)
         newYBlock.opacity = 0.75
         self.selectedBlock = newYBlock
+        sceneBlocks.append(newYBlock)
     }
     
     
     @IBAction func addXBlockToScene(_ sender: UITapGestureRecognizer) {
+        let enabledButton = sceneBlocks.count > 0 ? false : true
+        addToFortButton.isEnabled = enabledButton
         let newXBlock = XBlock()
         newXBlock.loadXBlock()
         newXBlock.position = kStartingPositionXBlock
@@ -145,10 +154,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene.rootNode.addChildNode(newXBlock)
         newXBlock.opacity = 0.75
         self.selectedBlock = newXBlock
+        sceneBlocks.append(newXBlock)
     }
     
     
     @IBAction func addZBlockToScene(_ sender: UITapGestureRecognizer) {
+        let enabledButton = sceneBlocks.count > 0 ? false : true
+        addToFortButton.isEnabled = enabledButton
         let newZBlock = ZBlock()
         newZBlock.loadZBlock()
         newZBlock.position = kStartingPositionZBlock
@@ -156,6 +168,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene.rootNode.addChildNode(newZBlock)
         newZBlock.opacity = 0.75
         self.selectedBlock = newZBlock
+        sceneBlocks.append(newZBlock)
     }
     
     @IBAction func addBlockToFort(_ sender: UITapGestureRecognizer) {
@@ -165,7 +178,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             temporaryBlock = nil
         }
         selectedBlock.opacity = 1.0
+        let material = SCNMaterial()
+        material.diffuse.contents = UIImage(named: "art.scnassets/wooden_texture.jpg")
+        selectedBlock.getBox().materials = [material]
         currentFort.addBlock(block: selectedBlock)
+        selectedBlock = Block()
+        addToFortButton.isEnabled = false
     }
     
     private func checkPoximities() {
@@ -174,10 +192,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if tempDist > 0.4 {
                 temporaryBlock?.removeFromParentNode()
                 temporaryBlock = nil
+                addToFortButton.isEnabled = false
             }
         } else {
             let proxTuple = currentFort.checkProximity(selectedBlock: selectedBlock)
             if proxTuple.0 != selectedBlock {
+                addToFortButton.isEnabled = true
                 let newBlockPos = blockMover.linkBlocks(blockTuple: (proxTuple.0, selectedBlock), anchorTuple: (proxTuple.1, proxTuple.2))
                 if !fortBlockPositionExists(blockPos: newBlockPos) {
                     let tempBox = selectedBlock.getBox()
@@ -190,6 +210,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     temporaryBlock?.position = newBlockPos
                     sceneView.scene.rootNode.addChildNode(temporaryBlock!)
                 }
+            } else if (sceneBlocks.count > 1) {
+                addToFortButton.isEnabled = false
+            } else {
+                addToFortButton.isEnabled = true
             }
         }
     }
@@ -205,19 +229,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
             
     @IBAction func didReceiveScreenTap(_ sender: UITapGestureRecognizer) {
-        
         if sender.state == .ended {
             let location: CGPoint = sender.location(in: sceneView)
-            let hits = self.sceneView.hitTest(location, options: nil)
+            let hits = self.sceneView.hitTest(location, options: [:])
             if let tappednode = hits.first?.node {
+                let parentBlock = tappednode.parent as? Block
                 let material = SCNMaterial()
-                material.diffuse.contents = UIColor.red
-                tappednode.geometry?.materials=[material]
-                for node in sceneView.scene.rootNode.childNodes {
-                    if (tappednode.name == node.name) && (((node as? Block) != nil)) {
-                        selectedBlock = node as! Block
-                    }
-                }
+                material.diffuse.contents = UIColor.blue
+                parentBlock?.geometry?.materials=[material]
+                parentBlock?.opacity = 0.50
+                parentBlock?.childNodes[0].geometry?.materials = [material]
+                currentFort.removeBlock(block: parentBlock!)
+                selectedBlock = parentBlock ?? selectedBlock
             }
         }
     }

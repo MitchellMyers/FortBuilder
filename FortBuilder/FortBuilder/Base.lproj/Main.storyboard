@@ -122,6 +122,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="addToFortButton" destination="sG8-Hj-sau" id="juC-UJ-inv"/>
                         <outlet property="sceneView" destination="7i3-Oj-9gF" id="cq3-uX-8NL"/>
                     </connections>
                 </viewController>

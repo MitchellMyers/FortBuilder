@@ -17,6 +17,15 @@ class Fort {
         fortBlocks.append(block)
     }
     
+    func removeBlock(block: Block) {
+        for i in 1...fortBlocks.count - 1 {
+            if block.isEqual(fortBlocks[i]) {
+                fortBlocks.remove(at: i)
+                break
+            }
+        }
+    }
+    
     func checkProximity(selectedBlock: Block) -> (Block, SCNVector3, SCNVector3) {
         for fortBlock in fortBlocks {
             for fbAnchor in fortBlock.getAnchorPoints() {
