@@ -49,9 +49,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     var currentCenter = SCNVector3()
     
-    
-    
+    @IBOutlet weak var deleteBlockButton: UIButton!
     @IBOutlet var addToFortButton: UIButton!
+    
     
     
     override func viewDidLoad() {
@@ -73,6 +73,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.isUserInteractionEnabled = true
         
         addToFortButton.isEnabled = false
+        deleteBlockButton.isEnabled = false
         
         sliderBlockToContainerDict[sliderBlockZ.tag] = sliderContainer1
         sliderBlockToContainerDict[sliderBlockX.tag] = sliderContainer2
@@ -142,6 +143,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             print("Adding Y block...")
             let enabledButton = sceneBlocks.count > 0 ? false : true
             addToFortButton.isEnabled = enabledButton
+            deleteBlockButton.isEnabled = true
             let newYBlock = YBlock()
             newYBlock.loadYBlock()
             newYBlock.position = kStartingPositionYBlock
@@ -159,6 +161,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             print("Adding X block...")
             let enabledButton = sceneBlocks.count > 0 ? false : true
             addToFortButton.isEnabled = enabledButton
+            deleteBlockButton.isEnabled = true
             let newXBlock = XBlock()
             newXBlock.loadXBlock()
             newXBlock.position = kStartingPositionXBlock
@@ -176,6 +179,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             print("Adding Z block...")
             let enabledButton = sceneBlocks.count > 0 ? false : true
             addToFortButton.isEnabled = enabledButton
+            deleteBlockButton.isEnabled = true
             let newZBlock = ZBlock()
             newZBlock.loadZBlock()
             newZBlock.position = kStartingPositionZBlock
@@ -200,8 +204,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         currentFort.addBlock(block: selectedBlock)
         selectedBlock = Block()
         addToFortButton.isEnabled = false
+        deleteBlockButton.isEnabled = false
     }
     
+    @IBAction func deleteBlock(_ sender: UITapGestureRecognizer) {
+        selectedBlock.removeFromParentNode()
+        for i in 0...sceneBlocks.count - 1 {
+            if selectedBlock.isEqual(sceneBlocks[i]) {
+                sceneBlocks.remove(at: i)
+                break
+            }
+        }
+        selectedBlock = Block()
+        deleteBlockButton.isEnabled = false
+        addToFortButton.isEnabled = false
+    }
     
     @IBAction func rightSliderSwipe(_ sender: UISwipeGestureRecognizer) {
         let currYContainer = sliderBlockToContainerDict[sliderBlockY.tag]
@@ -336,6 +353,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 parentBlock?.childNodes[0].geometry?.materials = [material]
                 currentFort.removeBlock(block: parentBlock ?? Block())
                 selectedBlock = parentBlock ?? selectedBlock
+                let enabledButton = sceneBlocks.count > 1 ? false : true
+                addToFortButton.isEnabled = enabledButton
+                deleteBlockButton.isEnabled = true
             }
         }
     }

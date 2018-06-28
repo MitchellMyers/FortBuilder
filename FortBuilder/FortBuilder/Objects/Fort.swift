@@ -18,10 +18,12 @@ class Fort {
     }
     
     func removeBlock(block: Block) {
-        for i in 0...fortBlocks.count - 1 {
-            if block.isEqual(fortBlocks[i]) {
-                fortBlocks.remove(at: i)
-                break
+        if fortBlocks.count > 0 {
+            for i in 0...fortBlocks.count - 1 {
+                if block.isEqual(fortBlocks[i]) {
+                    fortBlocks.remove(at: i)
+                    break
+                }
             }
         }
     }

@@ -92,7 +92,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sG8-Hj-sau">
-                                <rect key="frame" x="147" y="679" width="80" height="30"/>
+                                <rect key="frame" x="80" y="679" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Add To Fort"/>
@@ -100,11 +100,23 @@
                                     <outletCollection property="gestureRecognizers" destination="JV9-cM-T2Z" appends="YES" id="aM9-ke-eq0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEs-JI-eYc" userLabel="Delete Block">
+                                <rect key="frame" x="205" y="679" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Delete Block">
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Dvf-eP-b5t" appends="YES" id="EDw-MF-Ahy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="addToFortButton" destination="sG8-Hj-sau" id="juC-UJ-inv"/>
+                        <outlet property="deleteBlockButton" destination="AEs-JI-eYc" id="hUi-Tx-ZgF"/>
                         <outlet property="sceneView" destination="7i3-Oj-9gF" id="cq3-uX-8NL"/>
                         <outlet property="sliderBlockX" destination="FLA-U6-X91" id="CyS-UJ-hLy"/>
                         <outlet property="sliderBlockY" destination="vw7-zU-HsR" id="bVE-dY-zOy"/>
@@ -136,6 +148,11 @@
                 <tapGestureRecognizer id="ICi-WE-YWW">
                     <connections>
                         <action selector="didReceiveScreenTap:" destination="BV1-FR-VrT" id="nDP-Ed-tNr"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Dvf-eP-b5t">
+                    <connections>
+                        <action selector="deleteBlock:" destination="BV1-FR-VrT" id="P1a-h5-bSU"/>
                     </connections>
                 </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="right" id="4Rz-NF-QT6">
