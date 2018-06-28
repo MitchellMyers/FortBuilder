@@ -23,15 +23,36 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet var sliderView: UIView!
+    let sliderContainer0: Int = 0
+    let sliderContainer1: Int = 1
+    let sliderContainer2: Int = 2
+    let sliderContainer3: Int = 3
+    let sliderContainer4: Int = 4
+    
+    @IBOutlet var sliderBlockZ: UIView!
+    @IBOutlet var sliderBlockX: UIView!
+    @IBOutlet var sliderBlockY: UIView!
+    
+    var currSlideBlockTag : Int = 1
+    
+    var sliderBlocks = [UIView]()
+    
+    var sliderBlockToContainerDict = [Int : Int]()
+    var sliderIndexToContainerDict = [Int : Int]()
     
     var selectedBlock = Block()
     var temporaryBlock : SCNNode? = nil
-    let blockMover = Mover()
+    let blockLinker = BlockLinker()
     var currentFort = Fort()
     var sceneBlocks = [SCNNode]()
     
+    var currentCenter = SCNVector3()
+    
+    
     
     @IBOutlet var addToFortButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +73,25 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.isUserInteractionEnabled = true
         
         addToFortButton.isEnabled = false
+        
+        sliderBlockToContainerDict[sliderBlockZ.tag] = sliderContainer1
+        sliderBlockToContainerDict[sliderBlockX.tag] = sliderContainer2
+        sliderBlockToContainerDict[sliderBlockY.tag] = sliderContainer3
+        
+        sliderIndexToContainerDict[0] = sliderContainer0
+        sliderIndexToContainerDict[1] = sliderContainer1
+        sliderIndexToContainerDict[2] = sliderContainer2
+        sliderIndexToContainerDict[3] = sliderContainer3
+        sliderIndexToContainerDict[4] = sliderContainer4
+        
+        sliderBlocks.append(sliderBlockZ)
+        sliderBlocks.append(sliderBlockX)
+        sliderBlocks.append(sliderBlockY)
+        
+        sliderBlockZ.alpha = 0.5
+        sliderBlockX.alpha = 1.0
+        sliderBlockY.alpha = 0.5
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,79 +136,55 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
-    @IBAction func moveBlockLeft(_ sender: UILongPressGestureRecognizer) {
-        blockMover.moveLeft(sender: sender, block: selectedBlock)
-        checkPoximities()
-    }
-    
-    
-    @IBAction func moveBlockRight(_ sender: UILongPressGestureRecognizer) {
-        blockMover.moveRight(sender: sender, block: selectedBlock)
-        checkPoximities()
-    }
-    
-    
-    @IBAction func moveBlockUp(_ sender: UILongPressGestureRecognizer) {
-        blockMover.moveUp(sender: sender, block: selectedBlock)
-        checkPoximities()
-    }
-    
-    @IBAction func moveBlockDown(_ sender: UILongPressGestureRecognizer) {
-        blockMover.moveDown(sender: sender, block: selectedBlock)
-        checkPoximities()
-    }
-    
-    @IBAction func moveBlockForward(_ sender: UILongPressGestureRecognizer) {
-        blockMover.moveForward(sender: sender, block: selectedBlock)
-        checkPoximities()
-    }
-    
-    
-    @IBAction func moveBlockBack(_ sender: UILongPressGestureRecognizer) {
-        blockMover.moveBackward(sender: sender, block: selectedBlock)
-        checkPoximities()
-    }
-    
     
     @IBAction func addYBlockToScene(_ sender: UITapGestureRecognizer) {
-        let enabledButton = sceneBlocks.count > 0 ? false : true
-        addToFortButton.isEnabled = enabledButton
-        let newYBlock = YBlock()
-        newYBlock.loadYBlock()
-        newYBlock.position = kStartingPositionYBlock
-        newYBlock.rotation = SCNVector4Zero
-        sceneView.scene.rootNode.addChildNode(newYBlock)
-        newYBlock.opacity = 0.75
-        self.selectedBlock = newYBlock
-        sceneBlocks.append(newYBlock)
+        if currSlideBlockTag == 2 {
+            print("Adding Y block...")
+            let enabledButton = sceneBlocks.count > 0 ? false : true
+            addToFortButton.isEnabled = enabledButton
+            let newYBlock = YBlock()
+            newYBlock.loadYBlock()
+            newYBlock.position = kStartingPositionYBlock
+            newYBlock.rotation = SCNVector4Zero
+            sceneView.scene.rootNode.addChildNode(newYBlock)
+            newYBlock.opacity = 0.75
+            self.selectedBlock = newYBlock
+            sceneBlocks.append(newYBlock)
+        }
     }
     
     
     @IBAction func addXBlockToScene(_ sender: UITapGestureRecognizer) {
-        let enabledButton = sceneBlocks.count > 0 ? false : true
-        addToFortButton.isEnabled = enabledButton
-        let newXBlock = XBlock()
-        newXBlock.loadXBlock()
-        newXBlock.position = kStartingPositionXBlock
-        newXBlock.rotation = SCNVector4Zero
-        sceneView.scene.rootNode.addChildNode(newXBlock)
-        newXBlock.opacity = 0.75
-        self.selectedBlock = newXBlock
-        sceneBlocks.append(newXBlock)
+        if currSlideBlockTag == 1 {
+            print("Adding X block...")
+            let enabledButton = sceneBlocks.count > 0 ? false : true
+            addToFortButton.isEnabled = enabledButton
+            let newXBlock = XBlock()
+            newXBlock.loadXBlock()
+            newXBlock.position = kStartingPositionXBlock
+            newXBlock.rotation = SCNVector4Zero
+            sceneView.scene.rootNode.addChildNode(newXBlock)
+            newXBlock.opacity = 0.75
+            self.selectedBlock = newXBlock
+            sceneBlocks.append(newXBlock)
+        }
     }
     
     
     @IBAction func addZBlockToScene(_ sender: UITapGestureRecognizer) {
-        let enabledButton = sceneBlocks.count > 0 ? false : true
-        addToFortButton.isEnabled = enabledButton
-        let newZBlock = ZBlock()
-        newZBlock.loadZBlock()
-        newZBlock.position = kStartingPositionZBlock
-        newZBlock.rotation = SCNVector4Zero
-        sceneView.scene.rootNode.addChildNode(newZBlock)
-        newZBlock.opacity = 0.75
-        self.selectedBlock = newZBlock
-        sceneBlocks.append(newZBlock)
+        if currSlideBlockTag == 0 {
+            print("Adding Z block...")
+            let enabledButton = sceneBlocks.count > 0 ? false : true
+            addToFortButton.isEnabled = enabledButton
+            let newZBlock = ZBlock()
+            newZBlock.loadZBlock()
+            newZBlock.position = kStartingPositionZBlock
+            newZBlock.rotation = SCNVector4Zero
+            sceneView.scene.rootNode.addChildNode(newZBlock)
+            newZBlock.opacity = 0.75
+            self.selectedBlock = newZBlock
+            sceneBlocks.append(newZBlock)
+        }
     }
     
     @IBAction func addBlockToFort(_ sender: UITapGestureRecognizer) {
@@ -186,6 +202,85 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         addToFortButton.isEnabled = false
     }
     
+    
+    @IBAction func rightSliderSwipe(_ sender: UISwipeGestureRecognizer) {
+        let currYContainer = sliderBlockToContainerDict[sliderBlockY.tag]
+        if !(currYContainer == sliderContainer4) {
+            for slideBlock in sliderBlocks {
+                let fromView = sliderBlockToContainerDict[slideBlock.tag]
+                sliderBlockToContainerDict[slideBlock.tag] = sliderIndexToContainerDict[fromView! + 1]
+                UIView.animate(withDuration: 0.5, animations: {
+                    slideBlock.frame = CGRect(x: slideBlock.frame.minX + (self.sliderView?.frame.width)! / 5.0, y: slideBlock.frame.minY, width: slideBlock.frame.width, height: slideBlock.frame.height)
+                })
+                if (fromView! + 1) != 2 {
+                    slideBlock.alpha = 0.5
+                } else {
+                    currSlideBlockTag = slideBlock.tag
+                    slideBlock.alpha = 1.0
+                }
+            }
+        }
+    }
+    
+    
+    @IBAction func leftSliderSwipe(_ sender: UISwipeGestureRecognizer) {
+        let currZContainer = sliderBlockToContainerDict[sliderBlockZ.tag]
+        if !(currZContainer == sliderContainer0) {
+            for slideBlock in sliderBlocks {
+                let fromView = sliderBlockToContainerDict[slideBlock.tag]
+                sliderBlockToContainerDict[slideBlock.tag] = sliderIndexToContainerDict[fromView! - 1]
+                UIView.animate(withDuration: 0.5, animations: {
+                    slideBlock.frame = CGRect(x: slideBlock.frame.minX - (self.sliderView?.frame.width)! / 5.0, y: slideBlock.frame.minY, width: slideBlock.frame.width, height: slideBlock.frame.height)
+                })
+                if (fromView! - 1) != 2 {
+                    slideBlock.alpha = 0.5
+                } else {
+                    currSlideBlockTag = slideBlock.tag
+                    slideBlock.alpha = 1.0
+                }
+            }
+        }
+    }
+    
+    @IBAction func moveSelectedBlock(_ sender: UIPanGestureRecognizer) {
+        sender.maximumNumberOfTouches = 1
+        let translation = sender.translation(in: sceneView.superview)
+        if sender.state == .began {
+            // Save the view's original position.
+            currentCenter.x = selectedBlock.position.x
+            currentCenter.y = selectedBlock.position.y
+            currentCenter.z = selectedBlock.position.z
+        }
+        // Update the position for the .began, .changed, and .ended states
+        if sender.state != .cancelled {
+            // Add the X and Y translation to the view's original position.
+            let newCenter = CGPoint(x: CGFloat(currentCenter.x) + (translation.x / 300), y: CGFloat(currentCenter.y) - (translation.y / 300))
+            selectedBlock.position = SCNVector3Make(Float(newCenter.x), Float(newCenter.y), selectedBlock.position.z)
+            checkPoximities()
+        }
+        
+    }
+    
+    
+    @IBAction func moveSelectedBlockZDir(_ sender: UIPanGestureRecognizer) {
+        sender.minimumNumberOfTouches = 2
+        let translation = sender.translation(in: sceneView.superview)
+        if sender.state == .began {
+            // Save the view's original position.
+            currentCenter.x = selectedBlock.position.x
+            currentCenter.y = selectedBlock.position.y
+            currentCenter.z = selectedBlock.position.z
+        }
+        // Update the position for the .began, .changed, and .ended states
+        if sender.state != .cancelled {
+            // Add the X and Y translation to the view's original position.
+            let newCenter = CGPoint(x: CGFloat(currentCenter.x), y: CGFloat(currentCenter.y))
+            let newZ = currentCenter.z + Float(translation.y / 300)
+            selectedBlock.position = SCNVector3Make(Float(newCenter.x), Float(newCenter.y), newZ)
+            checkPoximities()
+        }
+    }
+    
     private func checkPoximities() {
         if temporaryBlock != nil {
             let tempDist = currentFort.getDistance(blockOnePos: (temporaryBlock?.position)!, blockTwoPos: selectedBlock.position)
@@ -198,7 +293,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let proxTuple = currentFort.checkProximity(selectedBlock: selectedBlock)
             if proxTuple.0 != selectedBlock {
                 addToFortButton.isEnabled = true
-                let newBlockPos = blockMover.linkBlocks(blockTuple: (proxTuple.0, selectedBlock), anchorTuple: (proxTuple.1, proxTuple.2))
+                let newBlockPos = blockLinker.linkBlocks(blockTuple: (proxTuple.0, selectedBlock), anchorTuple: (proxTuple.1, proxTuple.2))
                 if !fortBlockPositionExists(blockPos: newBlockPos) {
                     let tempBox = selectedBlock.getBox()
                     let newBox = SCNBox(width: tempBox.width, height: tempBox.height, length: tempBox.length, chamferRadius: 0.0)

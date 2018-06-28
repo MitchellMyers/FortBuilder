@@ -17,7 +17,7 @@
 		30089CC620D84CB8001660C8 /* FortBuilderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CC520D84CB8001660C8 /* FortBuilderUITests.swift */; };
 		30089CD520D84D15001660C8 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CD420D84D15001660C8 /* Block.swift */; };
 		30089CD720D97E16001660C8 /* AnchorPointBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CD620D97E16001660C8 /* AnchorPointBuilder.swift */; };
-		30089CD920D99C95001660C8 /* Mover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CD820D99C95001660C8 /* Mover.swift */; };
+		30089CD920D99C95001660C8 /* BlockLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CD820D99C95001660C8 /* BlockLinker.swift */; };
 		30089CDB20DAF632001660C8 /* YBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CDA20DAF632001660C8 /* YBlock.swift */; };
 		30089CDD20DAF672001660C8 /* ZBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CDC20DAF672001660C8 /* ZBlock.swift */; };
 		30089CDF20DAFA58001660C8 /* Fort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CDE20DAFA58001660C8 /* Fort.swift */; };
@@ -58,7 +58,7 @@
 		30089CC720D84CB8001660C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30089CD420D84D15001660C8 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		30089CD620D97E16001660C8 /* AnchorPointBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorPointBuilder.swift; sourceTree = "<group>"; };
-		30089CD820D99C95001660C8 /* Mover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mover.swift; sourceTree = "<group>"; };
+		30089CD820D99C95001660C8 /* BlockLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockLinker.swift; sourceTree = "<group>"; };
 		30089CDA20DAF632001660C8 /* YBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBlock.swift; sourceTree = "<group>"; };
 		30089CDC20DAF672001660C8 /* ZBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZBlock.swift; sourceTree = "<group>"; };
 		30089CDE20DAFA58001660C8 /* Fort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fort.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 				30089CD420D84D15001660C8 /* Block.swift */,
 				30089CD620D97E16001660C8 /* AnchorPointBuilder.swift */,
 				E03182F420DA8C8100422176 /* XBlock.swift */,
-				30089CD820D99C95001660C8 /* Mover.swift */,
+				30089CD820D99C95001660C8 /* BlockLinker.swift */,
 				30089CDA20DAF632001660C8 /* YBlock.swift */,
 				30089CDC20DAF672001660C8 /* ZBlock.swift */,
 				30089CDE20DAFA58001660C8 /* Fort.swift */,
@@ -292,7 +292,7 @@
 				30089CD520D84D15001660C8 /* Block.swift in Sources */,
 				30089CDB20DAF632001660C8 /* YBlock.swift in Sources */,
 				30089CD720D97E16001660C8 /* AnchorPointBuilder.swift in Sources */,
-				30089CD920D99C95001660C8 /* Mover.swift in Sources */,
+				30089CD920D99C95001660C8 /* BlockLinker.swift in Sources */,
 				30089CDD20DAF672001660C8 /* ZBlock.swift in Sources */,
 				30089CDF20DAFA58001660C8 /* Fort.swift in Sources */,
 				30089CA820D84CB6001660C8 /* ViewController.swift in Sources */,

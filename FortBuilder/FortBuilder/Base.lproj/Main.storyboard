@@ -26,96 +26,78 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="ICi-WE-YWW" appends="YES" id="NeD-yf-iMP"/>
+                                    <outletCollection property="gestureRecognizers" destination="EUw-zL-45U" appends="YES" id="m32-0f-KYz"/>
+                                    <outletCollection property="gestureRecognizers" destination="DRn-im-I0E" appends="YES" id="7hy-xl-KV1"/>
                                 </connections>
                             </arscnView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDc-ia-537">
-                                <rect key="frame" x="278" y="702" width="56" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Forward"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Prz-aS-9n9">
+                                <rect key="frame" x="16" y="717" width="343" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6A6-to-DiN">
+                                        <rect key="frame" x="74" y="2" width="56" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Z" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3h-8O-d64">
+                                                <rect key="frame" x="8" y="18" width="41" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="vM0-9j-bGR" appends="YES" id="SB3-fj-cBG"/>
+                                        </connections>
+                                    </view>
+                                    <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vw7-zU-HsR">
+                                        <rect key="frame" x="212" y="2" width="56" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Y" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5f5-fh-x4E">
+                                                <rect key="frame" x="7" y="18" width="41" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="fEo-Zp-6pi" appends="YES" id="iaH-ld-49C"/>
+                                        </connections>
+                                    </view>
+                                    <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FLA-U6-X91">
+                                        <rect key="frame" x="143" y="2" width="56" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0d-Dv-cDd">
+                                                <rect key="frame" x="7" y="17" width="41" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="4Zc-rZ-a0o" appends="YES" id="CiZ-Hm-1Dd"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="hD9-Lh-YGm" appends="YES" id="aVe-Mh-H70"/>
+                                    <outletCollection property="gestureRecognizers" destination="4Rz-NF-QT6" appends="YES" id="Od1-Yq-aHw"/>
+                                    <outletCollection property="gestureRecognizers" destination="XoH-cR-UXh" appends="YES" id="ND9-qG-B1v"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ha-X9-TDc">
-                                <rect key="frame" x="289" y="740" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="es7-6Z-fkB" appends="YES" id="fO2-nC-Oku"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydP-qc-WIf">
-                                <rect key="frame" x="291" y="664" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Y"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="fEo-Zp-6pi" appends="YES" id="weI-zZ-cDD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VzN-z8-gDB">
-                                <rect key="frame" x="329" y="664" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Z"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="vM0-9j-bGR" appends="YES" id="K9a-Q6-Do2"/>
-                                </connections>
-                            </button>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sG8-Hj-sau">
-                                <rect key="frame" x="266" y="626" width="80" height="30"/>
+                                <rect key="frame" x="147" y="679" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Add To Fort"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="JV9-cM-T2Z" appends="YES" id="aM9-ke-eq0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glD-xV-Pid">
-                                <rect key="frame" x="253" y="664" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="X"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="4Zc-rZ-a0o" appends="YES" id="ML4-dc-2kL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFs-PR-NVM">
-                                <rect key="frame" x="16" y="702" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Left"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="2cl-Vq-zWD" appends="YES" id="dJk-nG-SA3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2f-fc-nmk">
-                                <rect key="frame" x="59" y="702" width="36" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Right"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="KpO-tL-VNi" appends="YES" id="OT0-xw-UWq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNf-6T-lVA">
-                                <rect key="frame" x="37" y="664" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Up"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="DT1-J3-43Q" appends="YES" id="W98-8Q-bNg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhS-v6-1Km">
-                                <rect key="frame" x="33" y="740" width="39" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Down"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="kuP-2m-s9q" appends="YES" id="lex-cg-2zw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -124,39 +106,13 @@
                     <connections>
                         <outlet property="addToFortButton" destination="sG8-Hj-sau" id="juC-UJ-inv"/>
                         <outlet property="sceneView" destination="7i3-Oj-9gF" id="cq3-uX-8NL"/>
+                        <outlet property="sliderBlockX" destination="FLA-U6-X91" id="CyS-UJ-hLy"/>
+                        <outlet property="sliderBlockY" destination="vw7-zU-HsR" id="bVE-dY-zOy"/>
+                        <outlet property="sliderBlockZ" destination="6A6-to-DiN" id="asm-BB-tZm"/>
+                        <outlet property="sliderView" destination="Prz-aS-9n9" id="xXa-E8-ckJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="2cl-Vq-zWD">
-                    <connections>
-                        <action selector="moveBlockLeft:" destination="BV1-FR-VrT" id="aXf-H4-oca"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="KpO-tL-VNi">
-                    <connections>
-                        <action selector="moveBlockRight:" destination="BV1-FR-VrT" id="8VV-dS-K0x"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="DT1-J3-43Q">
-                    <connections>
-                        <action selector="moveBlockUp:" destination="BV1-FR-VrT" id="X91-XI-r0r"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="kuP-2m-s9q">
-                    <connections>
-                        <action selector="moveBlockDown:" destination="BV1-FR-VrT" id="2lb-gv-Had"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="hD9-Lh-YGm">
-                    <connections>
-                        <action selector="moveBlockForward:" destination="BV1-FR-VrT" id="3Jz-P1-IAT"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.0" id="es7-6Z-fkB">
-                    <connections>
-                        <action selector="moveBlockBack:" destination="BV1-FR-VrT" id="Xtd-a0-JCJ"/>
-                    </connections>
-                </pongPressGestureRecognizer>
                 <tapGestureRecognizer id="fEo-Zp-6pi">
                     <connections>
                         <action selector="addYBlockToScene:" destination="BV1-FR-VrT" id="R1U-kh-U76"/>
@@ -182,6 +138,26 @@
                         <action selector="didReceiveScreenTap:" destination="BV1-FR-VrT" id="nDP-Ed-tNr"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="4Rz-NF-QT6">
+                    <connections>
+                        <action selector="rightSliderSwipe:" destination="BV1-FR-VrT" id="0g3-iW-ZDZ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="XoH-cR-UXh">
+                    <connections>
+                        <action selector="leftSliderSwipe:" destination="BV1-FR-VrT" id="CVn-aP-B4X"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="EUw-zL-45U">
+                    <connections>
+                        <action selector="moveSelectedBlock:" destination="BV1-FR-VrT" id="HL7-jE-ktX"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="DRn-im-I0E">
+                    <connections>
+                        <action selector="moveSelectedBlockZDir:" destination="BV1-FR-VrT" id="IMM-Gq-36Q"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="34.399999999999999" y="52.463054187192121"/>
         </scene>
