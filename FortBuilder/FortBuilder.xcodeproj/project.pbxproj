@@ -21,6 +21,7 @@
 		30089CDB20DAF632001660C8 /* YBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CDA20DAF632001660C8 /* YBlock.swift */; };
 		30089CDD20DAF672001660C8 /* ZBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CDC20DAF672001660C8 /* ZBlock.swift */; };
 		30089CDF20DAFA58001660C8 /* Fort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CDE20DAFA58001660C8 /* Fort.swift */; };
+		30BB387020F5009B00660F87 /* FortMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB386F20F5009B00660F87 /* FortMapViewController.swift */; };
 		E03182F520DA8C8100422176 /* XBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03182F420DA8C8100422176 /* XBlock.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		30089CDA20DAF632001660C8 /* YBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBlock.swift; sourceTree = "<group>"; };
 		30089CDC20DAF672001660C8 /* ZBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZBlock.swift; sourceTree = "<group>"; };
 		30089CDE20DAFA58001660C8 /* Fort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fort.swift; sourceTree = "<group>"; };
+		30BB386F20F5009B00660F87 /* FortMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortMapViewController.swift; sourceTree = "<group>"; };
 		E03182F420DA8C8100422176 /* XBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBlock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				30089CAC20D84CB8001660C8 /* Assets.xcassets */,
 				30089CAE20D84CB8001660C8 /* LaunchScreen.storyboard */,
 				30089CB120D84CB8001660C8 /* Info.plist */,
+				30BB386F20F5009B00660F87 /* FortMapViewController.swift */,
 			);
 			path = FortBuilder;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			files = (
 				30089CD520D84D15001660C8 /* Block.swift in Sources */,
 				30089CDB20DAF632001660C8 /* YBlock.swift in Sources */,
+				30BB387020F5009B00660F87 /* FortMapViewController.swift in Sources */,
 				30089CD720D97E16001660C8 /* AnchorPointBuilder.swift in Sources */,
 				30089CD920D99C95001660C8 /* BlockLinker.swift in Sources */,
 				30089CDD20DAF672001660C8 /* ZBlock.swift in Sources */,
@@ -471,13 +475,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N678APXU9Q;
+				DEVELOPMENT_TEAM = 69767D3ZMK;
 				INFOPLIST_FILE = FortBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilder123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -489,13 +493,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N678APXU9Q;
+				DEVELOPMENT_TEAM = 69767D3ZMK;
 				INFOPLIST_FILE = FortBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilder123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BMS.FortBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
