@@ -81,7 +81,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-
+    @IBAction func closeKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     /*
     // MARK: - Navigation
 

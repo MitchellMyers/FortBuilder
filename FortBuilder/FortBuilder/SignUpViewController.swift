@@ -109,6 +109,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         setContinueButton(enabled: formFilled)
     }
     
+    @IBAction func closeKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
     
     /*
     // MARK: - Navigation

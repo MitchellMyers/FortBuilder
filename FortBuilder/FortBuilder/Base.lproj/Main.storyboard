@@ -34,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dig-mT-xny" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-175" y="844"/>
+            <point key="canvasLocation" x="-318" y="840"/>
         </scene>
         <!--MenuViewController-->
         <scene sceneID="vvW-rh-cHM">
@@ -150,6 +150,9 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Ej7-yw-wbD" appends="YES" id="tAh-Ea-o69"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="ContinueButton" destination="BfE-M8-qiP" id="5OE-1S-GZ8"/>
@@ -160,6 +163,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xha-ic-3Io" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ej7-yw-wbD">
+                    <connections>
+                        <action selector="closeKeyboard:" destination="UGb-yF-1MF" id="ydY-ia-gcA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1568" y="636"/>
         </scene>
@@ -223,6 +231,9 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Pm3-WT-uM2" appends="YES" id="su9-Kx-PdN"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="ContinueButton" destination="fC4-nd-11r" id="pIf-KR-9eb"/>
@@ -233,6 +244,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="41X-bp-8AQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="tDm-R0-gsF" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="Pm3-WT-uM2">
+                    <connections>
+                        <action selector="closeKeyboard:" destination="TAu-C7-pSM" id="5QX-IU-tEV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1630" y="-542"/>
         </scene>
@@ -272,6 +288,14 @@
                                     <action selector="logoutButton:" destination="4a9-0r-9Ot" eventType="touchUpInside" id="vkr-Wb-M8l"/>
                                     <outletCollection property="gestureRecognizers" destination="3xo-Ii-wyF" appends="YES" id="fga-dr-YxO"/>
                                     <segue destination="krU-cT-CSK" kind="show" identifier="logoutToMenuViewController" id="hiz-EB-txD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVq-xM-rxk">
+                                <rect key="frame" x="156" y="262" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fort Map"/>
+                                <connections>
+                                    <segue destination="mfX-dd-kxF" kind="show" id="HFn-81-QZp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -374,23 +398,12 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sG8-Hj-sau">
-                                <rect key="frame" x="80" y="643" width="80" height="30"/>
+                                <rect key="frame" x="147" y="630" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Add To Fort"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="JV9-cM-T2Z" appends="YES" id="aM9-ke-eq0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEs-JI-eYc" userLabel="Delete Block">
-                                <rect key="frame" x="205" y="643" width="87" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Delete Block">
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Dvf-eP-b5t" appends="YES" id="EDw-MF-Ahy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FqD-kR-E81">
@@ -399,6 +412,26 @@
                                 <state key="normal" title="Back to Navigation"/>
                                 <connections>
                                     <segue destination="2wr-XU-Bfy" kind="show" id="Vmt-VY-ekg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WuU-Jq-oCj">
+                                <rect key="frame" x="293" y="630" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Save Fort"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="DXS-ku-Gks" appends="YES" id="yjR-5p-5PR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEs-JI-eYc" userLabel="Delete Block">
+                                <rect key="frame" x="16" y="630" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Delete Block">
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Dvf-eP-b5t" appends="YES" id="EDw-MF-Ahy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -412,6 +445,7 @@
                         <outlet property="sliderBlockY" destination="vw7-zU-HsR" id="bVE-dY-zOy"/>
                         <outlet property="sliderBlockZ" destination="6A6-to-DiN" id="asm-BB-tZm"/>
                         <outlet property="sliderView" destination="Prz-aS-9n9" id="xXa-E8-ckJ"/>
+                        <segue destination="yms-a8-Rr9" kind="show" identifier="saveFortSegue" id="RRI-Kc-Qgs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -445,6 +479,11 @@
                         <action selector="deleteBlock:" destination="BV1-FR-VrT" id="P1a-h5-bSU"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="DXS-ku-Gks">
+                    <connections>
+                        <action selector="saveCurrentFort:" destination="BV1-FR-VrT" id="IHZ-Gq-yK8"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="right" id="4Rz-NF-QT6">
                     <connections>
                         <action selector="rightSliderSwipe:" destination="BV1-FR-VrT" id="0g3-iW-ZDZ"/>
@@ -468,8 +507,94 @@
             </objects>
             <point key="canvasLocation" x="674" y="44"/>
         </scene>
+        <!--Save Fort View Controller-->
+        <scene sceneID="I1M-ZM-ZgJ">
+            <objects>
+                <viewController id="yms-a8-Rr9" customClass="SaveFortViewController" customModule="FortBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hsp-yK-OTm"/>
+                        <viewControllerLayoutGuide type="bottom" id="PVt-lT-k2H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9pR-Bp-dnr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fort Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eo-6q-QTp">
+                                <rect key="frame" x="144" y="119" width="86" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zQ9-3N-hkO">
+                                <rect key="frame" x="139" y="148" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ndc-RT-xcJ">
+                                <rect key="frame" x="139" y="230" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Screen Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grL-Fi-ffH">
+                                <rect key="frame" x="114" y="201" width="147" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z10-kO-mOM">
+                                <rect key="frame" x="154" y="375" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save Fort"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="nRI-xX-636" appends="YES" id="79U-Co-gTz"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qcI-kF-0Fe">
+                                <rect key="frame" x="127" y="292" width="121" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Private"/>
+                                    <segment title="Public"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentControlIndexChange:" destination="yms-a8-Rr9" eventType="valueChanged" id="ds3-Fl-gZz"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="0Me-VZ-REM" appends="YES" id="QbC-6w-0BU"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="fortNameTextField" destination="zQ9-3N-hkO" id="4fi-Ri-Bw1"/>
+                        <outlet property="privacySegmentControl" destination="qcI-kF-0Fe" id="11W-QN-CtD"/>
+                        <outlet property="saveFortButton" destination="z10-kO-mOM" id="E6m-ev-O1x"/>
+                        <outlet property="screenNameTextField" destination="Ndc-RT-xcJ" id="XZk-yu-UOk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jyi-wK-PSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nRI-xX-636">
+                    <connections>
+                        <action selector="saveFort:" destination="yms-a8-Rr9" id="7Pf-fz-X8H"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="0Me-VZ-REM">
+                    <connections>
+                        <action selector="closeKeyboard:" destination="yms-a8-Rr9" id="KCT-cg-sf2"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1546" y="44"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fli-Jh-LBl"/>
+        <segue reference="Vmt-VY-ekg"/>
     </inferredMetricsTieBreakers>
 </document>

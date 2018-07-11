@@ -24,6 +24,7 @@ class MenuViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if Auth.auth().currentUser != nil {
+            
             self.performSegue(withIdentifier: "toNavigationController", sender: self)
         }
     }

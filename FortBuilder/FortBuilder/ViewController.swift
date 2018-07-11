@@ -382,4 +382,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         node.addChildNode(planeNode)
     }
     
+    @IBAction func saveCurrentFort(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "saveFortSegue", sender: self)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let saveFortViewController = segue.destination as? SaveFortViewController {
+            saveFortViewController.currentFort = self.currentFort
+        }
+    }
+    
 }
