@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func handleSignUp() {
-        guard UsernameTextField.text != nil else { return }
+        guard let username = UsernameTextField.text else { return }
         guard let email = EmailTextField.text else { return }
         guard let pass = PasswordTextField.text else { return }
         

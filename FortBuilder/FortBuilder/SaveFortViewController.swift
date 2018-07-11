@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class SaveFortViewController: UIViewController, UITextFieldDelegate {
     
@@ -41,6 +42,7 @@ class SaveFortViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func saveFort(_ sender: UITapGestureRecognizer) {
+        print("My user: ", Auth.auth().currentUser?.displayName ?? "No disp name")
         print(currentFort?.getFortBlocks() ?? "AINT NONE")
     }
     
