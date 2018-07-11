@@ -57,7 +57,7 @@ class Fort {
                 let block = fortBlocks[i]
                 var blockDict = [String:String]()
                 blockDict["block_type"] = block.getType()
-                blockDict["position"] = "(\(block.position.x),\(block.position.y),\(block.position.z))"
+                blockDict["position"] = "\(block.position.x),\(block.position.y),\(block.position.z)"
                 blocksDict[String(i)] = blockDict
             }
         }

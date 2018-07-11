@@ -23,6 +23,7 @@
 		30089CDF20DAFA58001660C8 /* Fort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30089CDE20DAFA58001660C8 /* Fort.swift */; };
 		301AAD9220F678A100866D26 /* SaveFortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301AAD9120F678A100866D26 /* SaveFortViewController.swift */; };
 		30BB387020F5009B00660F87 /* FortMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB386F20F5009B00660F87 /* FortMapViewController.swift */; };
+		30D1F25C20F6BD050075CBA3 /* FortMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D1F25B20F6BD050075CBA3 /* FortMapMarker.swift */; };
 		7CF2CDC9E844D88054E359B6 /* libPods-FortBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D26F5A6FB6E5770BBD7193A0 /* libPods-FortBuilder.a */; };
 		A530DBF558E6619865BA2507 /* libPods-FortBuilderUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD70E43489FAA936FB43131 /* libPods-FortBuilderUITests.a */; };
 		D75F59F08F797DED7ED579C8 /* libPods-FortBuilderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3265DE04632EF67A5D2EBB /* libPods-FortBuilderTests.a */; };
@@ -76,6 +77,7 @@
 		30089CDE20DAFA58001660C8 /* Fort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fort.swift; sourceTree = "<group>"; };
 		301AAD9120F678A100866D26 /* SaveFortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFortViewController.swift; sourceTree = "<group>"; };
 		30BB386F20F5009B00660F87 /* FortMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortMapViewController.swift; sourceTree = "<group>"; };
+		30D1F25B20F6BD050075CBA3 /* FortMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortMapMarker.swift; sourceTree = "<group>"; };
 		3BD70E43489FAA936FB43131 /* libPods-FortBuilderUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FortBuilderUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		971A03B662F8E979DEB5E292 /* Pods-FortBuilder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FortBuilder.release.xcconfig"; path = "Pods/Target Support Files/Pods-FortBuilder/Pods-FortBuilder.release.xcconfig"; sourceTree = "<group>"; };
 		99F45F0B1B0DCAF5E5BA6A85 /* Pods-FortBuilderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FortBuilderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FortBuilderTests/Pods-FortBuilderTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				30089CDA20DAF632001660C8 /* YBlock.swift */,
 				30089CDC20DAF672001660C8 /* ZBlock.swift */,
 				30089CDE20DAFA58001660C8 /* Fort.swift */,
+				30D1F25B20F6BD050075CBA3 /* FortMapMarker.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				30089CD720D97E16001660C8 /* AnchorPointBuilder.swift in Sources */,
 				30089CD920D99C95001660C8 /* BlockLinker.swift in Sources */,
 				E01D542620F539D300D476E7 /* MenuViewController.swift in Sources */,
+				30D1F25C20F6BD050075CBA3 /* FortMapMarker.swift in Sources */,
 				E01D542420F51B0200D476E7 /* SignUpViewController.swift in Sources */,
 				30089CDD20DAF672001660C8 /* ZBlock.swift in Sources */,
 				30089CDF20DAFA58001660C8 /* Fort.swift in Sources */,

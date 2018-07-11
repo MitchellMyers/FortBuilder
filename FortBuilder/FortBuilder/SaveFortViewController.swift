@@ -61,7 +61,8 @@ class SaveFortViewController: UIViewController, UITextFieldDelegate, CLLocationM
     
     
     @IBAction func saveFort(_ sender: UITapGestureRecognizer) {
-        self.ref.child("forts").child(UUID().uuidString).setValue(["fort_name": self.fortNameTextField.text!, "creator_username": self.screenNameTextField.text!, "location" : "(\(currUserLocation.latitude),\(currUserLocation.longitude))", "privacy" : privacy, "blocks": currentFort!.getFortBlockDict()])
+        let creatorEmail = Auth.auth().currentUser?.email
+        self.ref.child("forts").child(UUID().uuidString).setValue(["fort_name": self.fortNameTextField.text!, "creator_username": self.screenNameTextField.text!, "creator_email": creatorEmail!, "location" : "\(currUserLocation.latitude),\(currUserLocation.longitude)", "privacy" : privacy, "blocks": currentFort!.getFortBlockDict()])
         let alert = UIAlertController(title: "Success", message: "Fort successfully saved!", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
             self.performSegue(withIdentifier: "finishedSavingFortSegue", sender: self)
@@ -106,7 +107,6 @@ class SaveFortViewController: UIViewController, UITextFieldDelegate, CLLocationM
         default:
             break
         }
-        print(privacy)
     }
     
     
