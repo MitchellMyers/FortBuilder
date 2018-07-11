@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func handleSignUp() {
-        guard let username = UsernameTextField.text else { return }
+        guard UsernameTextField.text != nil else { return }
         guard let email = EmailTextField.text else { return }
         guard let pass = PasswordTextField.text else { return }
         
@@ -57,8 +57,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().createUser(withEmail: email, password: pass) { user, error in
             if error == nil && user != nil {
                 print("User created!")
+                self.performSegue(withIdentifier: "toNavFromSignUp", sender: self)
             } else {
                 print("Error: \(error!.localizedDescription)")
+                //Tells the user that there is an error and then gets firebase to tell them the error
+                let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
                 
             }
         }
