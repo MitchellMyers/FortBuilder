@@ -39,5 +39,9 @@ class Block: SCNNode {
         let anchors = [SCNVector3]()
         return anchors
     }
+    
+    func getType() -> String {
+        return "None"
+    }
 
 }

@@ -594,6 +594,7 @@
                         <outlet property="privacySegmentControl" destination="qcI-kF-0Fe" id="11W-QN-CtD"/>
                         <outlet property="saveFortButton" destination="z10-kO-mOM" id="E6m-ev-O1x"/>
                         <outlet property="screenNameTextField" destination="Ndc-RT-xcJ" id="XZk-yu-UOk"/>
+                        <segue destination="2wr-XU-Bfy" kind="show" identifier="finishedSavingFortSegue" id="SUF-Ox-DFb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jyi-wK-PSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -612,6 +613,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Vmt-VY-ekg"/>
+        <segue reference="SUF-Ox-DFb"/>
     </inferredMetricsTieBreakers>
 </document>

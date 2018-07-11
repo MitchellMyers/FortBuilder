@@ -38,4 +38,8 @@ class ZBlock: Block {
         return myBox
     }
     
+    override func getType() -> String {
+        return "Z"
+    }
+    
 }

@@ -19,6 +19,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var ContinueButton: UIButton!
     
+    var ref: DatabaseReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,6 +32,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         EmailTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         PasswordTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
 
+        ref = Database.database().reference()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +59,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         Auth.auth().createUser(withEmail: email, password: pass) { user, error in
             if error == nil && user != nil {
+                self.ref.child("users").child((user?.user.uid)!).setValue(["username": username, "email": email])
                 print("User created!")
                 self.performSegue(withIdentifier: "toNavFromSignUp", sender: self)
             } else {

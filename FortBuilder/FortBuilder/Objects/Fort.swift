@@ -49,4 +49,19 @@ class Fort {
         return sqrtf(pow((blockTwoPos.x - blockOnePos.x), 2.0) + pow((blockTwoPos.y - blockOnePos.y), 2.0) + pow((blockTwoPos.z - blockOnePos.z), 2.0))
     }
     
+    func getFortBlockDict() -> [String: [String: String]] {
+        var blocksDict = [String: [String: String]]()
+        let fortBlocks = self.getFortBlocks()
+        if fortBlocks.count > 1 {
+            for i in 0...fortBlocks.count - 1 {
+                let block = fortBlocks[i]
+                var blockDict = [String:String]()
+                blockDict["block_type"] = block.getType()
+                blockDict["position"] = "(\(block.position.x),\(block.position.y),\(block.position.z))"
+                blocksDict[String(i)] = blockDict
+            }
+        }
+        return blocksDict
+    }
+    
 }

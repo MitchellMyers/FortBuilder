@@ -38,4 +38,8 @@ class YBlock: Block {
         return myBox
     }
     
+    override func getType() -> String {
+        return "Y"
+    }
+    
 }

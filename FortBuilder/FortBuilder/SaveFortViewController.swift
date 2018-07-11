@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import Firebase
+import CoreLocation
 
-class SaveFortViewController: UIViewController, UITextFieldDelegate {
+class SaveFortViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
     
     @IBOutlet weak var fortNameTextField: UITextField!
@@ -18,14 +19,32 @@ class SaveFortViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var privacySegmentControl: UISegmentedControl!
     @IBOutlet weak var saveFortButton: UIButton!
     
+    let locationManager = CLLocationManager()
+    var currUserLocation = CLLocationCoordinate2D()
     var privacy = "Private"
     var currentFort : Fort?
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         saveFortButton.isEnabled = false
         fortNameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         screenNameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        let userID = Auth.auth().currentUser?.uid
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let username = value?["username"] as? String ?? ""
+            self.screenNameTextField.text = username
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -42,8 +61,13 @@ class SaveFortViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func saveFort(_ sender: UITapGestureRecognizer) {
-        print("My user: ", Auth.auth().currentUser?.displayName ?? "No disp name")
-        print(currentFort?.getFortBlocks() ?? "AINT NONE")
+        self.ref.child("forts").child(UUID().uuidString).setValue(["fort_name": self.fortNameTextField.text!, "creator_username": self.screenNameTextField.text!, "location" : "(\(currUserLocation.latitude),\(currUserLocation.longitude))", "privacy" : privacy, "blocks": currentFort!.getFortBlockDict()])
+        let alert = UIAlertController(title: "Success", message: "Fort successfully saved!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+            self.performSegue(withIdentifier: "finishedSavingFortSegue", sender: self)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func textFieldChanged(_ target:UITextField) {
@@ -60,6 +84,11 @@ class SaveFortViewController: UIViewController, UITextFieldDelegate {
         let info = notification.userInfo!
         let _: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        currUserLocation = locValue
     }
     
     

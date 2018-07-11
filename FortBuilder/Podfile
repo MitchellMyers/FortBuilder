@@ -8,6 +8,7 @@ target 'FortBuilder' do
   # Pods for FortBuilder
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   target 'FortBuilderTests' do
     inherit! :search_paths
