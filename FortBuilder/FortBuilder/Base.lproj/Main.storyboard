@@ -9,6 +9,33 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Fort Map View Controller-->
+        <scene sceneID="RoE-Ya-267">
+            <objects>
+                <viewController id="mfX-dd-kxF" customClass="FortMapViewController" customModule="FortBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TAF-gO-nEa"/>
+                        <viewControllerLayoutGuide type="bottom" id="0RA-gp-0Of"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ULQ-zP-KuH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qzM-XP-guo">
+                                <rect key="frame" x="16" y="137" width="343" height="451"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="qzM-XP-guo" id="78y-DS-QSd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dig-mT-xny" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-175" y="844"/>
+        </scene>
         <!--MenuViewController-->
         <scene sceneID="vvW-rh-cHM">
             <objects>
