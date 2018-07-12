@@ -24,7 +24,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        ContinueButton.setTitle("Continue",for: .normal)
         setContinueButton(enabled: false)
         ContinueButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         
@@ -83,15 +82,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @objc func keyboardWillAppear(notification: NSNotification){
-        
-        let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        
-        ContinueButton.center = CGPoint(x: view.center.x,
-                                        y: view.frame.height - keyboardFrame.height - 16.0 - ContinueButton.frame.height / 2)
-    }
-    
     @objc func handleDismissButton(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }
@@ -103,6 +93,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         PasswordTextField.resignFirstResponder()
         
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillAppear(notification: NSNotification){
+        let info = notification.userInfo!
+        let _: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
     }
     
     @objc func textFieldChanged(_ target:UITextField) {
