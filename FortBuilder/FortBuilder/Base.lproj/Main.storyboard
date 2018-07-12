@@ -36,7 +36,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNc-Y8-1BZ">
                                 <rect key="frame" x="133" y="678" width="109" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="See Fort"/>
+                                <state key="normal" title="See/Edit Fort"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="UCN-oI-nRc" appends="YES" id="JOu-Xc-eaN"/>
                                 </connections>
@@ -646,7 +646,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uJn-6J-RZf"/>
-        <segue reference="NRn-Zw-nEj"/>
+        <segue reference="p0w-PT-rvH"/>
+        <segue reference="hXe-Bf-s9m"/>
     </inferredMetricsTieBreakers>
 </document>

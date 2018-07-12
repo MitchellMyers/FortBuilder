@@ -126,7 +126,7 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             if fortLocation != currUserLocation {
                 navigateToFortButton.isEnabled = true
                 distanceToSelectedFort = fortLocation.distance(from: self.currUserLocation)
-                if distanceToSelectedFort! < 5000 {
+                if distanceToSelectedFort! < 15 {
                     navigateToFortButton.isEnabled = false
                     seeFortButton.isEnabled = true
                 }
