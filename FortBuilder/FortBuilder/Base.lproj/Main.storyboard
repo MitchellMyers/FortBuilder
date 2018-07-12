@@ -33,16 +33,44 @@
                                     <segue destination="2wr-XU-Bfy" kind="show" id="hXe-Bf-s9m"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNc-Y8-1BZ">
+                                <rect key="frame" x="133" y="678" width="109" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="See Fort"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="UCN-oI-nRc" appends="YES" id="JOu-Xc-eaN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KH-fs-uuQ">
+                                <rect key="frame" x="118" y="619" width="139" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Navigate To Fort"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="TcT-bg-Epf" appends="YES" id="rzx-nA-tf6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="qzM-XP-guo" id="78y-DS-QSd"/>
+                        <outlet property="navigateToFortButton" destination="1KH-fs-uuQ" id="Tct-sA-2TD"/>
+                        <outlet property="seeFortButton" destination="xNc-Y8-1BZ" id="fjf-pi-E4c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dig-mT-xny" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="TcT-bg-Epf">
+                    <connections>
+                        <action selector="navigateToFort:" destination="mfX-dd-kxF" id="NQY-qz-9kd"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="UCN-oI-nRc">
+                    <connections>
+                        <action selector="renderAndEditFort:" destination="mfX-dd-kxF" id="9Hn-n7-abt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-318" y="840"/>
+            <point key="canvasLocation" x="-319.19999999999999" y="839.40886699507394"/>
         </scene>
         <!--MenuViewController-->
         <scene sceneID="vvW-rh-cHM">
@@ -613,6 +641,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SUF-Ox-DFb"/>
+        <segue reference="hXe-Bf-s9m"/>
     </inferredMetricsTieBreakers>
 </document>

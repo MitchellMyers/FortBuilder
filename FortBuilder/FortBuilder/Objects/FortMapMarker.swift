@@ -12,9 +12,11 @@ import MapKit
 class FortMapMarker: NSObject, MKAnnotation {
     let title: String?
     let creator: String?
+    let fortId: String?
     let coordinate: CLLocationCoordinate2D
     
-    init(title: String, creator: String, coordinate: CLLocationCoordinate2D) {
+    init(fortId: String, title: String, creator: String, coordinate: CLLocationCoordinate2D) {
+        self.fortId = fortId
         self.title = title
         self.creator = creator
         self.coordinate = coordinate
