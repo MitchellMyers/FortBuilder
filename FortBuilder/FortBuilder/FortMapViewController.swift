@@ -13,7 +13,6 @@ import CoreLocation
 import Firebase
 
 
-
 class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
@@ -24,10 +23,13 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var ref: DatabaseReference!
     var closestForts = [Any]()
     var selectedFort: FortMapMarker?
+    var headingImageView: UIImageView?
+    var userHeading: CLLocationDirection?
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var navigateToFortButton: UIButton!
     @IBOutlet weak var seeFortButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +40,9 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
-            mapView.showsUserLocation = true
+            locationManager.startUpdatingHeading()
             mapView.delegate = self
+            mapView.showsUserLocation = true
         }
         ref = Database.database().reference()
         renderAllFortLocations()
@@ -71,6 +74,13 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             initialUserLocation = locValue
             oneTimeCenter = false
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        if newHeading.headingAccuracy < 0 { return }
+        let heading = newHeading.trueHeading > 0 ? newHeading.trueHeading : newHeading.magneticHeading
+        userHeading = heading
+        updateHeadingRotation()
     }
     
     func centerMapOnLocation(location: CLLocationCoordinate2D) {
@@ -156,6 +166,50 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     
     @IBAction func renderAndEditFort(_ sender: UITapGestureRecognizer) {
+    }
+    
+    private func degreesToRadians(degrees: Double) -> Double { return degrees * .pi / 180.0 }
+    private func radiansToDegrees(radians: Double) -> Double { return radians * 180.0 / .pi }
+    
+    private func getBearingBetweenTwoPoints(point1 : CLLocation, point2 : CLLocation) -> Double {
+        
+        let lat1 = degreesToRadians(degrees: point1.coordinate.latitude)
+        let lon1 = degreesToRadians(degrees: point1.coordinate.longitude)
+        
+        let lat2 = degreesToRadians(degrees: point2.coordinate.latitude)
+        let lon2 = degreesToRadians(degrees: point2.coordinate.longitude)
+        
+        let dLon = lon2 - lon1
+        
+        let y = sin(dLon) * cos(lat2)
+        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
+        let radiansBearing = atan2(y, x)
+        
+        return radiansToDegrees(radians: radiansBearing)
+    }
+    
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        if views.last?.annotation is MKUserLocation {
+            addHeadingView(toAnnotationView: views.last!)
+        }
+    }
+    
+    func addHeadingView(toAnnotationView annotationView: MKAnnotationView) {
+        if headingImageView == nil {
+            let image = UIImage(named: "art.scnassets/location_arrow_2_resized.png")
+            headingImageView = UIImageView(image: image)
+            headingImageView!.frame = CGRect(x: (annotationView.frame.size.width - (image?.size.width)!)/2, y: (annotationView.frame.size.height - (image?.size.height)!)/2, width: (image?.size.width)!, height: (image?.size.height)!)
+            annotationView.insertSubview(headingImageView!, at: 0)
+            headingImageView!.isHidden = true
+        }
+    }
+    
+    func updateHeadingRotation() {
+        if let headingImageView = self.headingImageView {
+            headingImageView.isHidden = false
+            let rotation = CGFloat(self.userHeading!/180 * Double.pi)
+            headingImageView.transform = CGAffineTransform(rotationAngle: rotation)
+        }
     }
     
     
