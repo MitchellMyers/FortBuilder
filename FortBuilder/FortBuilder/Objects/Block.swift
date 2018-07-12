@@ -11,8 +11,6 @@ import ARKit
 
 class Block: SCNNode {
     
-    // TODO: create a struct for anchorpoints. It will be used to determine which anchorpoints are available for building and which are used
-    
     func loadBlock() {
         
         let box = SCNBox(width: 1.0, height: 0.2, length: 0.2, chamferRadius: 0)

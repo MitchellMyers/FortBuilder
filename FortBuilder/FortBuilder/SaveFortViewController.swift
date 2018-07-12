@@ -23,6 +23,7 @@ class SaveFortViewController: UIViewController, UITextFieldDelegate, CLLocationM
     var currUserLocation = CLLocationCoordinate2D()
     var privacy = "Private"
     var currentFort : Fort?
+    var editedByUsername : String?
     var ref: DatabaseReference!
     
     override func viewDidLoad() {
@@ -31,14 +32,15 @@ class SaveFortViewController: UIViewController, UITextFieldDelegate, CLLocationM
         saveFortButton.isEnabled = false
         fortNameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         screenNameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-        let userID = Auth.auth().currentUser?.uid
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let username = value?["username"] as? String ?? ""
-            self.screenNameTextField.text = username
-        }) { (error) in
-            print(error.localizedDescription)
+        if editedByUsername != nil && editedByUsername! != (currentFort?.getCreatorUsername())! {
+            setUpSegmentConrolForPrevFort()
+            fortNameTextField.isEnabled = false
+            fortNameTextField.text = (currentFort?.getFortName())!
+            privacySegmentControl.isEnabled = false
+            self.screenNameTextField.text = editedByUsername!
+            saveFortButton.isEnabled = true
+        } else {
+            self.screenNameTextField.text = (currentFort?.getCreatorUsername())!
         }
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -55,14 +57,37 @@ class SaveFortViewController: UIViewController, UITextFieldDelegate, CLLocationM
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fortNameTextField.becomeFirstResponder()
+        if editedByUsername == nil {
+            fortNameTextField.becomeFirstResponder()
+        } else {
+            setUpSegmentConrolForPrevFort()
+            fortNameTextField.text = (currentFort?.getFortName())!
+            screenNameTextField.becomeFirstResponder()
+        }
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillAppear), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
     
     
+    private func createNewFortDbInstance(_ creatorEmail: String?) {
+        self.ref.child("forts").child(currentFort!.getFortId()!).setValue(["fort_name": self.fortNameTextField.text!, "creator_username": self.screenNameTextField.text!, "creator_email": creatorEmail!, "last_edited_by": "", "location" : "\(currUserLocation.latitude),\(currUserLocation.longitude)", "privacy" : privacy, "blocks": currentFort!.getFortBlockDict()])
+    }
+    
+    private func updateFortDbInstance() {
+        self.ref.child("forts/\(currentFort!.getFortId()!)/last_edited_by").setValue(self.screenNameTextField.text!)
+        self.ref.child("forts/\(currentFort!.getFortId()!)/blocks").setValue(currentFort!.getFortBlockDict())
+        if editedByUsername != nil && editedByUsername! == (currentFort?.getCreatorUsername())! {
+            self.ref.child("forts/\(currentFort!.getFortId()!)/fort_name").setValue(self.fortNameTextField.text!)
+            self.ref.child("forts/\(currentFort!.getFortId()!)/privacy").setValue(privacy)
+        }
+    }
+    
     @IBAction func saveFort(_ sender: UITapGestureRecognizer) {
         let creatorEmail = Auth.auth().currentUser?.email
-        self.ref.child("forts").child(UUID().uuidString).setValue(["fort_name": self.fortNameTextField.text!, "creator_username": self.screenNameTextField.text!, "creator_email": creatorEmail!, "location" : "\(currUserLocation.latitude),\(currUserLocation.longitude)", "privacy" : privacy, "blocks": currentFort!.getFortBlockDict()])
+        if self.editedByUsername != nil {
+            updateFortDbInstance()
+        } else {
+            createNewFortDbInstance(creatorEmail)
+        }
         let alert = UIAlertController(title: "Success", message: "Fort successfully saved!", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
             self.performSegue(withIdentifier: "finishedSavingFortSegue", sender: self)
@@ -81,10 +106,8 @@ class SaveFortViewController: UIViewController, UITextFieldDelegate, CLLocationM
     }
     
     @objc func keyboardWillAppear(notification: NSNotification){
-        
         let info = notification.userInfo!
         let _: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -106,6 +129,21 @@ class SaveFortViewController: UIViewController, UITextFieldDelegate, CLLocationM
             privacy = "Public"
         default:
             break
+        }
+    }
+    
+    private func setUpSegmentConrolForPrevFort() {
+        let currFortPrivacy = currentFort!.getFortPrivacy()
+        switch currFortPrivacy {
+            case "Public":
+                self.privacySegmentControl.selectedSegmentIndex = 1
+                self.privacy = "Public"
+            case "Private":
+                self.privacySegmentControl.selectedSegmentIndex = 0
+                self.privacy = "Private"
+            default:
+                self.privacySegmentControl.selectedSegmentIndex = 0
+                self.privacy = "Private"
         }
     }
     

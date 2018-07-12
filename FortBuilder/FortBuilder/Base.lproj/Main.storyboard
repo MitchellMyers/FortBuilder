@@ -56,6 +56,7 @@
                         <outlet property="mapView" destination="qzM-XP-guo" id="78y-DS-QSd"/>
                         <outlet property="navigateToFortButton" destination="1KH-fs-uuQ" id="Tct-sA-2TD"/>
                         <outlet property="seeFortButton" destination="xNc-Y8-1BZ" id="fjf-pi-E4c"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="editSelectedFortSegue" id="p0w-PT-rvH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dig-mT-xny" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -354,7 +355,7 @@
         <!--BuildFortController-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" userLabel="BuildFortController" customClass="ViewController" customModule="FortBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" userLabel="BuildFortController" customClass="BuildFortViewController" customModule="FortBuilder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w67-Yx-nrz"/>
                         <viewControllerLayoutGuide type="bottom" id="3Np-bk-WPu"/>
@@ -446,9 +447,6 @@
                                 <rect key="frame" x="123" y="750" width="129" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back to Navigation"/>
-                                <connections>
-                                    <segue destination="2wr-XU-Bfy" kind="show" id="Vmt-VY-ekg"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WuU-Jq-oCj">
                                 <rect key="frame" x="293" y="630" width="66" height="30"/>
@@ -476,7 +474,7 @@
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Home"/>
                                 <connections>
-                                    <segue destination="2wr-XU-Bfy" kind="show" id="Nn0-TT-SGy"/>
+                                    <outletCollection property="gestureRecognizers" destination="Ofv-4g-YKS" appends="YES" id="bk9-QD-Rfw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -485,12 +483,14 @@
                     <connections>
                         <outlet property="addToFortButton" destination="sG8-Hj-sau" id="juC-UJ-inv"/>
                         <outlet property="deleteBlockButton" destination="AEs-JI-eYc" id="hUi-Tx-ZgF"/>
+                        <outlet property="saveFortButton" destination="WuU-Jq-oCj" id="auH-Qd-Ysb"/>
                         <outlet property="sceneView" destination="7i3-Oj-9gF" id="cq3-uX-8NL"/>
                         <outlet property="sliderBlockX" destination="FLA-U6-X91" id="CyS-UJ-hLy"/>
                         <outlet property="sliderBlockY" destination="vw7-zU-HsR" id="bVE-dY-zOy"/>
                         <outlet property="sliderBlockZ" destination="6A6-to-DiN" id="asm-BB-tZm"/>
                         <outlet property="sliderView" destination="Prz-aS-9n9" id="xXa-E8-ckJ"/>
                         <segue destination="yms-a8-Rr9" kind="show" identifier="saveFortSegue" id="RRI-Kc-Qgs"/>
+                        <segue destination="2wr-XU-Bfy" kind="show" identifier="buildFortViewToHome" id="NRn-Zw-nEj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -527,6 +527,11 @@
                 <tapGestureRecognizer id="DXS-ku-Gks">
                     <connections>
                         <action selector="saveCurrentFort:" destination="BV1-FR-VrT" id="IHZ-Gq-yK8"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Ofv-4g-YKS">
+                    <connections>
+                        <action selector="returnToHomeScreen:" destination="BV1-FR-VrT" id="DO0-Bc-q8Z"/>
                     </connections>
                 </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="right" id="4Rz-NF-QT6">
@@ -641,6 +646,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hXe-Bf-s9m"/>
+        <segue reference="uJn-6J-RZf"/>
+        <segue reference="NRn-Zw-nEj"/>
     </inferredMetricsTieBreakers>
 </document>

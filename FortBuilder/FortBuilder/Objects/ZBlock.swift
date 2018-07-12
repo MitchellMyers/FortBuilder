@@ -17,7 +17,7 @@ class ZBlock: Block {
      Parameters: None
      Returns: None
      */
-    func loadZBlock() {
+    override func loadBlock() {
         let box = SCNBox(width: 0.2, height: 0.2, length: 1.0, chamferRadius: 0)
         let material = SCNMaterial()
         material.diffuse.contents = UIImage(named: "art.scnassets/wooden_texture.jpg")

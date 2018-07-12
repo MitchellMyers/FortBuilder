@@ -17,7 +17,7 @@ class YBlock: Block {
      Parameters: None
      Returns: None
      */
-    func loadYBlock() {
+    override func loadBlock() {
         let box = SCNBox(width: 0.2, height: 1.0, length: 0.2, chamferRadius: 0)
         let material = SCNMaterial()
         material.diffuse.contents = UIImage(named: "art.scnassets/wooden_texture.jpg")

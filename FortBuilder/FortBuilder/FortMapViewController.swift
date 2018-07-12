@@ -11,6 +11,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Firebase
+import ARKit
 
 
 class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
@@ -25,27 +26,32 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var selectedFort: FortMapMarker?
     var headingImageView: UIImageView?
     var userHeading: CLLocationDirection?
+    var selectedFortOb : Fort?
+    var distanceToSelectedFort : Double?
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var navigateToFortButton: UIButton!
     @IBOutlet weak var seeFortButton: UIButton!
     
     
+    private func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-            locationManager.startUpdatingHeading()
-            mapView.delegate = self
-            mapView.showsUserLocation = true
+            setupLocationManager()
         }
         ref = Database.database().reference()
-        renderAllFortLocations()
+        markAllFortLocations()
         navigateToFortButton.isEnabled = false
         seeFortButton.isEnabled = false
     }
@@ -89,7 +95,7 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    private func renderAllFortLocations() {
+    private func markAllFortLocations() {
         let currentUserEmail = Auth.auth().currentUser?.email
         ref.child("forts").observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -100,9 +106,10 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                     let fortName = fort["fort_name"] as? String
                     let fortCreator = fort["creator_username"] as? String
                     let fortLocation = fort["location"] as? String
+                    let fortEditedBy = fort["last_edited_by"] as? String
                     let fortLatLong = fortLocation?.split(separator: ",")
                     let fortClLocation = CLLocation(latitude: Double(fortLatLong![0])!, longitude: Double(fortLatLong![1])!)
-                    let fortArtwork = FortMapMarker(fortId: id, title: fortName!, creator: fortCreator!, coordinate: fortClLocation.coordinate)
+                    let fortArtwork = FortMapMarker(fortId: id, title: fortName!, creator: fortCreator!, editedBy: fortEditedBy ?? "", coordinate: fortClLocation.coordinate)
                     self.mapView.addAnnotation(fortArtwork)
                 }
             }
@@ -118,8 +125,8 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             let fortLocation = CLLocation(latitude: (self.selectedFort?.coordinate.latitude)!, longitude: (self.selectedFort?.coordinate.longitude)!)
             if fortLocation != currUserLocation {
                 navigateToFortButton.isEnabled = true
-                let distanceToFort = fortLocation.distance(from: self.currUserLocation)
-                if distanceToFort < 10 {
+                distanceToSelectedFort = fortLocation.distance(from: self.currUserLocation)
+                if distanceToSelectedFort! < 5000 {
                     navigateToFortButton.isEnabled = false
                     seeFortButton.isEnabled = true
                 }
@@ -142,21 +149,9 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
     @IBAction func navigateToFort(_ sender: UITapGestureRecognizer) {
         if navigateToFortButton.titleLabel?.text != "Cancel Route" {
-            let request: MKDirectionsRequest = MKDirectionsRequest()
-            let sourcePlacemark = MKPlacemark.init(coordinate: self.currUserLocation.coordinate)
-            let destinationPlacemark = MKPlacemark.init(coordinate: (self.selectedFort?.coordinate)!)
-            request.source = MKMapItem(placemark: sourcePlacemark)
-            request.destination = MKMapItem(placemark: destinationPlacemark)
-            request.requestsAlternateRoutes = true
-            request.transportType = .walking
+            let request: MKDirectionsRequest = createDirectionsRequest()
             let directions = MKDirections(request: request)
-            directions.calculate { [unowned self] response, error in
-                guard let unwrappedResponse = response else { return }
-                for route in unwrappedResponse.routes {
-                    self.mapView.add(route.polyline)
-                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-                }
-            }
+            calculateAndAddDirections(directions)
             navigateToFortButton.setTitle("Cancel Route", for: .normal)
         } else {
             let mapOverlays = self.mapView.overlays
@@ -165,27 +160,29 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
     }
     
-    @IBAction func renderAndEditFort(_ sender: UITapGestureRecognizer) {
+    private func createDirectionsRequest() -> MKDirectionsRequest {
+        let request: MKDirectionsRequest = MKDirectionsRequest()
+        let sourcePlacemark = MKPlacemark.init(coordinate: self.currUserLocation.coordinate)
+        let destinationPlacemark = MKPlacemark.init(coordinate: (self.selectedFort?.coordinate)!)
+        request.source = MKMapItem(placemark: sourcePlacemark)
+        request.destination = MKMapItem(placemark: destinationPlacemark)
+        request.requestsAlternateRoutes = true
+        request.transportType = .walking
+        return request
     }
     
-    private func degreesToRadians(degrees: Double) -> Double { return degrees * .pi / 180.0 }
-    private func radiansToDegrees(radians: Double) -> Double { return radians * 180.0 / .pi }
+    private func calculateAndAddDirections(_ directions: MKDirections) {
+        directions.calculate { [unowned self] response, error in
+            guard let unwrappedResponse = response else { return }
+            for route in unwrappedResponse.routes {
+                self.mapView.add(route.polyline)
+                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+            }
+        }
+    }
     
-    private func getBearingBetweenTwoPoints(point1 : CLLocation, point2 : CLLocation) -> Double {
-        
-        let lat1 = degreesToRadians(degrees: point1.coordinate.latitude)
-        let lon1 = degreesToRadians(degrees: point1.coordinate.longitude)
-        
-        let lat2 = degreesToRadians(degrees: point2.coordinate.latitude)
-        let lon2 = degreesToRadians(degrees: point2.coordinate.longitude)
-        
-        let dLon = lon2 - lon1
-        
-        let y = sin(dLon) * cos(lat2)
-        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
-        let radiansBearing = atan2(y, x)
-        
-        return radiansToDegrees(radians: radiansBearing)
+    @IBAction func renderAndEditFort(_ sender: UITapGestureRecognizer) {
+        createFortFromFortId(fortId: (self.selectedFort?.fortId)!)
     }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
@@ -209,6 +206,61 @@ class FortMapViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             headingImageView.isHidden = false
             let rotation = CGFloat(self.userHeading!/180 * Double.pi)
             headingImageView.transform = CGAffineTransform(rotationAngle: rotation)
+        }
+    }
+    
+    func createFortFromFortId(fortId: String) {
+        ref.child("forts").child(fortId).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let dbFort = Fort()
+            let value = snapshot.value as? NSDictionary
+            let creatorUsername = value!["creator_username"] as? String
+            let fortName = value!["fort_name"] as? String
+            let fortPrivacy = value!["privacy"] as? String
+            let blocks = value!["blocks"] as? NSArray
+            for case let blockInfo as NSDictionary in (blocks!) {
+                let blockType = blockInfo["block_type"] as? String
+                let fortBlock = self.getFortBlockObject(blockType: blockType)
+                let newBlockPos = blockInfo["position"] as? String
+                let newBlockPosList = newBlockPos?.split(separator: ",")
+                let newBlockVect = SCNVector3(x: Float(newBlockPosList![0])!, y: Float(newBlockPosList![1])!, z: Float(newBlockPosList![2])!)
+                fortBlock.position = newBlockVect
+                dbFort.addBlock(block: fortBlock)
+            }
+            dbFort.setCreatorUsername(username: creatorUsername!)
+            dbFort.setFortId(uid: fortId)
+            dbFort.setFortName(name: fortName!)
+            dbFort.setFortPrivacy(privacy: fortPrivacy!)
+            self.passFortToFortBuilder(fortForPass: dbFort)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func getFortBlockObject(blockType: String?) -> Block {
+        var newBlock = Block()
+        switch blockType! {
+        case "X" :
+            newBlock = XBlock() as XBlock
+        case "Y":
+            newBlock = YBlock() as YBlock
+        case "Z" :
+            newBlock = ZBlock() as ZBlock
+        default:
+            break
+        }
+        return newBlock
+    }
+    
+    private func passFortToFortBuilder(fortForPass: Fort) {
+        self.selectedFortOb = fortForPass
+        self.performSegue(withIdentifier: "editSelectedFortSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let buildFortViewController = segue.destination as? BuildFortViewController {
+            buildFortViewController.preExistingFort = self.selectedFortOb!
+            buildFortViewController.distanceToFort = self.distanceToSelectedFort!
         }
     }
     

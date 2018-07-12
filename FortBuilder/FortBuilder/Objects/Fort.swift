@@ -12,6 +12,10 @@ import ARKit
 class Fort {
     
     private var fortBlocks = [Block]()
+    private var creatorUsername : String?
+    private var fortUid : String?
+    private var fortName : String?
+    private var fortPrivacy : String?
     
     func addBlock(block: Block) {
         fortBlocks.append(block)
@@ -62,6 +66,38 @@ class Fort {
             }
         }
         return blocksDict
+    }
+    
+    func setCreatorUsername(username: String) {
+        self.creatorUsername = username
+    }
+    
+    func getCreatorUsername() -> String? {
+        return self.creatorUsername
+    }
+    
+    func setFortId(uid: String) {
+        self.fortUid = uid
+    }
+    
+    func getFortId() -> String? {
+        return self.fortUid
+    }
+    
+    func setFortName(name: String) {
+        self.fortName = name
+    }
+    
+    func getFortName() -> String? {
+        return self.fortName
+    }
+    
+    func setFortPrivacy(privacy: String) {
+        self.fortPrivacy = privacy
+    }
+    
+    func getFortPrivacy() -> String? {
+        return self.fortPrivacy
     }
     
 }
