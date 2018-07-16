@@ -296,6 +296,7 @@ class BuildFortViewController: UIViewController, ARSCNViewDelegate {
     @IBAction func moveSelectedBlock(_ sender: UIPanGestureRecognizer) {
         sender.maximumNumberOfTouches = 1
         let translation = sender.translation(in: sceneView.superview)
+        let cameraRot = sceneView.session.currentFrame!.camera.eulerAngles.y
         if sender.state == .began {
             // Save the view's original position.
             currentCenter.x = selectedBlock!.position.x
@@ -305,8 +306,9 @@ class BuildFortViewController: UIViewController, ARSCNViewDelegate {
         // Update the position for the .began, .changed, and .ended states
         if sender.state != .cancelled {
             // Add the X and Y translation to the view's original position.
-            let newCenter = CGPoint(x: CGFloat(currentCenter.x) + (translation.x / 300), y: CGFloat(currentCenter.y) - (translation.y / 300))
-            selectedBlock!.position = SCNVector3Make(Float(newCenter.x), Float(newCenter.y), selectedBlock!.position.z)
+            let newCenter = CGPoint(x: CGFloat(currentCenter.x) + (CGFloat(cos(cameraRot)) * (translation.x / 300)), y: CGFloat(currentCenter.y) - (translation.y / 300))
+            let newZ = CGFloat(currentCenter.z) + (CGFloat(-sin(cameraRot)) * (translation.x / 300))
+            selectedBlock!.position = SCNVector3Make(Float(newCenter.x), Float(newCenter.y), Float(newZ))
             checkPoximities()
         }
         
@@ -316,6 +318,7 @@ class BuildFortViewController: UIViewController, ARSCNViewDelegate {
     @IBAction func moveSelectedBlockZDir(_ sender: UIPanGestureRecognizer) {
         sender.minimumNumberOfTouches = 2
         let translation = sender.translation(in: sceneView.superview)
+        let cameraRot = sceneView.session.currentFrame!.camera.eulerAngles.y
         if sender.state == .began {
             // Save the view's original position.
             currentCenter.x = selectedBlock!.position.x
@@ -325,9 +328,11 @@ class BuildFortViewController: UIViewController, ARSCNViewDelegate {
         // Update the position for the .began, .changed, and .ended states
         if sender.state != .cancelled {
             // Add the X and Y translation to the view's original position.
-            let newCenter = CGPoint(x: CGFloat(currentCenter.x), y: CGFloat(currentCenter.y))
-            let newZ = currentCenter.z + Float(translation.y / 300)
-            selectedBlock!.position = SCNVector3Make(Float(newCenter.x), Float(newCenter.y), newZ)
+            
+            let newCenter = CGPoint(x: CGFloat(currentCenter.x) + (CGFloat(sin(cameraRot)) * (translation.y / 300)) + (CGFloat(-sin(cameraRot)) * (translation.x / 300)), y: CGFloat(currentCenter.y))
+            let newZ = CGFloat(currentCenter.z) + (CGFloat(cos(cameraRot)) * (translation.y / 300)) + (CGFloat(-cos(cameraRot)) * (translation.x / 300))
+            
+            selectedBlock!.position = SCNVector3Make(Float(newCenter.x), Float(newCenter.y), Float(newZ))
             checkPoximities()
         }
     }
